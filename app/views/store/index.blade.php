@@ -75,6 +75,7 @@
             {{ Form::hidden('quantity', 1) }}
             {{ Form::hidden('id', $product->id) }}        
             <button type="submit" class="btn btn-primary">AGREGAR</button>
+            {{ HTML::link('https://www.mercadopago.com/mla/checkout/pay?pref_id=92714091-a77e277d-7106-42be-938a-ad8398563e2e', 'Comprar') }}
             {{ Form::close() }}           
           </p>
         </div>
