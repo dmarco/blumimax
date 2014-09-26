@@ -9,8 +9,9 @@ class CategoriesController extends BaseController {
 	}
 
 	public function getIndex() {
-		return View::make('admin.categories.index')
-			->with('categories', Category::all());
+		//return View::make('admin.categories.index')
+		//	->with('categories', Category::all());
+		return Category::all();
 	}
 
 	public function postCreate() {
