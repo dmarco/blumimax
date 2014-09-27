@@ -15,20 +15,9 @@
 Route::get('/', function()
 {
     return View::make('layouts.commingsoon');
-    //return View::make('layouts.main');
 });
 //Route::get('/', array('uses'=>'StoreController@getIndex')); // Descomentar cuando esté productivo
-
-Route::get('/home', function()
-{
-    return View::make('layouts.index');
-    //return View::make('layouts.main');
-});
-Route::get('/home/products', array('uses'=>'StoreController@getIndex')); // Sacar cuando esté productivo
-Route::get('/home/categories', array('uses'=>'HomeController@getIndex')); // Sacar cuando esté productivo
-
-
-
+Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando esté productivo
 Route::controller('admin/categories', 'CategoriesController');
 Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
