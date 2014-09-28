@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="blumimaxApp"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,9 +17,13 @@
         {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') }}
         {{ HTML::style('css/main.css') }}
         {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
+        
+
+        {{ HTML::script('https://code.angularjs.org/1.2.25/angular.min.js') }}
+        {{ HTML::script('js/app.js') }}
 
     </head>
-    <body>
+    <body ng-controller="GblCtrl">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -54,14 +58,26 @@
                   </ul>
                 </li>
 
-                {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }}
-                <div class="input-group">
-                  {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control')) }}
-                  <span class="input-group-btn">
-                    {{ Form::submit('Buscar', array('class'=>'btn btn-default')) }}
-                  </span>
-                </div><!-- /input-group -->
-                {{ Form::close() }}
+                <!-- {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }} -->
+                <form class="navbar-form navbar-right">
+                  <div class="input-group">
+                    {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'searchInput')) }}
+                    <span class="input-group-btn">
+                      {{ Form::submit('Buscar', array('class'=>'btn btn-default', 'ng-click'=>'search()')) }}
+                    </span>
+                  </div>
+                </form>
+                <!-- {{ Form::close() }}  -->
+                
+                <!--<form class="navbar-form navbar-right">
+                  <div class="input-group">
+                    <input type="text" class="form-control" ng-model="searchInput">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
+                    </span>
+                  </div>
+                </form>-->
+
               </ul>
 
               <!-- Right -->
@@ -101,6 +117,10 @@
 
         <!-- Begin page content -->
         <div class="container">
+
+          
+          <h4>:: @{{ searchInput }}</h4>   
+          <h4>:: @{{ users }}</h4>   
 
           @yield('search-keyword')
 
