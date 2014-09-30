@@ -22,8 +22,7 @@ Route::controller('admin/categories', 'CategoriesController');
 Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
-Route::controller('search', array('uses'=>'SearchController@getIndex'));
-
+// Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
 
 

@@ -39,9 +39,8 @@ class UsersController extends BaseController {
 
 	public function postSignin() {
 		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
-			return Redirect::to('/')->with('message', 'Thanks for signing in');
+			return Redirect::to('/home')->with('message', 'Thanks for signing in');
 		}
-
 		return Redirect::to('users/signin')->with('message', 'Your email/password combo was incorrect');
 	}
 

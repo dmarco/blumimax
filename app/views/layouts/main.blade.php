@@ -58,25 +58,16 @@
                   </ul>
                 </li>
 
-                <!-- {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }} -->
-                <form class="navbar-form navbar-right">
+                {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }}
+                <!-- <form class="navbar-form navbar-right"> -->
                   <div class="input-group">
                     {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'searchInput')) }}
                     <span class="input-group-btn">
                       {{ Form::submit('Buscar', array('class'=>'btn btn-default', 'ng-click'=>'search()')) }}
                     </span>
                   </div>
-                </form>
-                <!-- {{ Form::close() }}  -->
-                
-                <!--<form class="navbar-form navbar-right">
-                  <div class="input-group">
-                    <input type="text" class="form-control" ng-model="searchInput">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
-                    </span>
-                  </div>
-                </form>-->
+                <!-- </form> -->
+                {{ Form::close() }} 
 
               </ul>
 
@@ -118,9 +109,8 @@
         <!-- Begin page content -->
         <div class="container">
 
-          
-          <h4>:: @{{ searchInput }}</h4>   
-          <h4>:: @{{ users }}</h4>   
+          <!-- <h4>:: @{{ searchInput }}</h4> -->
+          <!-- <h4>:: @{{ users }}</h4> -->
 
           @yield('search-keyword')
 

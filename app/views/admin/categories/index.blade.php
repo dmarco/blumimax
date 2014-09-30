@@ -35,7 +35,12 @@
 		</div><!-- end form-errors -->
 		@endif
 
+
 		{{ Form::open(array('url'=>'admin/categories/create')) }}
+		<p>
+			{{ Form::label('Categoría') }}
+			{{ Form::select('category_id', Category::lists('name','id'), array('class' => 'form-control')) }}
+		</p>
 		<p>
 			{{ Form::label('nombre') }}
 			{{ Form::text('name', null, array('class'=>'form-control')) }}

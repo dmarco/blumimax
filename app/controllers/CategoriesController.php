@@ -18,6 +18,7 @@ class CategoriesController extends BaseController {
 
 		if ($validator->passes()) {
 			$category = new Category;
+			$category->parent_id = Input::get('category_id');
 			$category->name = Input::get('name');
 			$category->save();
 
