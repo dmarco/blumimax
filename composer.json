@@ -9,7 +9,9 @@
 		"moltin/currency": "dev-master",
 		"moltin/tax": "dev-master",
 		"moltin/cart": "dev-master",
-		"moltin/laravel-cart": "dev-master"
+		"moltin/laravel-cart": "dev-master",
+		"baum/baum": "~1.0",
+		"way/generators": "~2.0"
 	},
 	"autoload": {
 		"classmap": [

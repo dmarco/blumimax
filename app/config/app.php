@@ -123,6 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Moltin\Cart\CartServiceProvider',
+		'Baum\BaumServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
 
 	),
 

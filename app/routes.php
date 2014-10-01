@@ -23,6 +23,9 @@ Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
+Route::get('/crear', array('uses'=>'CategoriasController@create'));
+Route::get('/borrar/{id}', array('uses'=>'CategoriasController@destroy'));
+
 
 
 
