@@ -8,6 +8,7 @@ class CategoriasController extends BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
 		//
@@ -19,19 +20,11 @@ class CategoriasController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($parent_id,$name)
 	{
-		$root1 = Categoria::create(['name' => 'R1']);
-		$root2 = Categoria::create(['name' => 'R2']);
-
-		$child1 = Categoria::create(['name' => 'C1']);
-		$child2 = Categoria::create(['name' => 'C2']);
-
-		$child1->makeChildOf($root1);
-		$child2->makeChildOf($root2);
-
-		$root1->children()->get(); // <- returns $child1
-		$root2->children()->get(); // <- returns $child2
+		$node = Categoria::create(['name' => $name]);
+		$node->parent_id = $parent_id;
+		$node->save();
 	}
 
 	/**
@@ -43,6 +36,13 @@ class CategoriasController extends BaseController {
 	public function store()
 	{
 		//
+		// $node = Categoria::where('name', '=', 'Hombres')->first();
+		$node = Categoria::roots()->get();
+
+		return View::make('admin.categorias.index')
+			// ->with('categorias', $node->getDescendantsAndSelf());
+			->with('categorias', $node->getDescendantsAndSelf());
+
 	}
 
 	/**
@@ -55,6 +55,8 @@ class CategoriasController extends BaseController {
 	public function show($id)
 	{
 		//
+		$node = Categoria::find($id);
+		return $node->getLevel();
 	}
 
 	/**
@@ -91,8 +93,10 @@ class CategoriasController extends BaseController {
 	public function destroy($id)
 	{
 		//
-		$child1 = Categoria::all();
-		$child1->delete();
+		$node = Categoria::find($id);
+		$node->delete();
+		// return $node->getDescendantsAndSelf();
+		return Redirect::to('/list');
 	}
 
 }
