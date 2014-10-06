@@ -25,8 +25,8 @@ Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriasController@create'));
 Route::get('/delete/{id}', array('uses'=>'CategoriasController@destroy'));
-Route::get('/getdepth/{id}', array('uses'=>'CategoriasController@show'));
-Route::get('/list', array('uses'=>'CategoriasController@store'));
+Route::get('/getdepth/{id}', array('uses'=>'CategoriasController@store'));
+Route::get('/list', array('uses'=>'CategoriasController@show'));
 
 
 
