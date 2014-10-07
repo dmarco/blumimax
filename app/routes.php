@@ -23,10 +23,10 @@ Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
-Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriesController@index'));
-Route::get('/delete/{id}', array('uses'=>'CategoriesController@destroy'));
-Route::get('/getdepth/{id}', array('uses'=>'CategoriesController@store'));
-Route::get('/list', array('uses'=>'CategoriesController@show'));
+Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriasController@create'));
+Route::get('/delete/{id}', array('uses'=>'CategoriasController@destroy'));
+Route::get('/getdepth/{id}', array('uses'=>'CategoriasController@store'));
+Route::get('/list', array('uses'=>'CategoriasController@show'));
 
 
 

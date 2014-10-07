@@ -2,143 +2,50 @@
 
 class CategoriesController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /categories
-	 *
-	 * @return Response
-	 */
-
-	public function index()
-	{
-		//
-		return "hola";
+	public function __construct() {
+		parent::__construct();
+		$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->beforeFilter('admin');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /categories/create
-	 *
-	 * @return Response
-	 */
-	public function create($parent_id, $name)
-	{
-		$node = Category::create(['name' => $name]);
-		$node->parent_id = $parent_id;
-		$node->save();
+	public function getIndex() {
+		return View::make('admin.categories.index')
+			->with('categories', Category::all());
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /categories
-	 *
-	 * @return Response
-	 */
-	public function store($id)
-	{
-		//
-		$node = Category::find($id);
-		return $node->getLevel();
+	public function postCreate() {
+		$validator = Validator::make(Input::all(), Category::$rules);
+
+		if ($validator->passes()) {
+			$category = new Category;
+			$category->parent_id = Input::get('category_id');
+			$category->name = Input::get('name');
+			$category->save();
+
+			return Redirect::to('admin/categories/index')
+				->with('message', 'Category Created')
+				->with('alert-type', 'alert-success');
+		}
+
+		return Redirect::to('admin/categories/index')
+			->with('message', 'Something went wrong')
+			->with('alert-type', 'alert-danger')
+			->withErrors($validator)
+			->withInput();
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /categories/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show()
-	{
+	public function postDestroy() {
+		$category = Category::find(Input::get('id'));
 
-		$root = DB::table('categories')->where('parent_id', '=', NULL)->get();
-		$html = '<ul class="list-group">';
-    foreach($root as $cat){
-    	
-			$children = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
-    	$html .= '<li class="list-group-item">';
-    	$html .= '<span class="badge">'.count($children).'</span>';
-			$html .= '<a href="/delete/'.$cat->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a>';
-			$html .= $cat->name;
+		if ($category) {
+			$category->delete();
+			return Redirect::to('admin/categories/index')
+				->with('message', 'Category Deleted')
+				->with('alert-type', 'alert-success');
+		}
 
-			if(count($children) > 0) {
-        $html .= $this->getChildren($children);
-	    }
-
-    }
-    $html .= '</ul>';
-    
-    return View::make('admin.categories.index')
-			->with('html', $html);
-
+		return Redirect::to('admin/categories/index')
+			->with('message', 'Something went wrong, please try again')
+			->with('alert-type', 'alert-danger');
 	}
-  
-  /**
-	 * GetChildren the form for editing the specified resource.
-	 * GET /categories/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function getChildren($children) 
-  {
-  	$subhtml = '<ul class="list-group">';
-    foreach($children as $child){
-			
-			$children = DB::table('categories')->where('parent_id', '=', $child->id)->get();
-  		$subhtml .= '<li class="list-group-item">';
-  		$subhtml .= '<span class="badge">'.count($children).'</span>';
-  		$subhtml .= '<a href="/delete/'.$child->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> </a>';
-			$subhtml .= $child->name;
-
-      if(count($children) > 0) {
-        $subhtml .= $this->getChildren($children);
-      }
-
-    }
-    $subhtml .= '</ul>';
-    return $subhtml;
-	
-	}  
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /categories/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /categories/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /categories/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-		$node = Category::find($id);
-		$node->delete();
-		// return $node->getDescendantsAndSelf();
-		return Redirect::to('/list');
-	}
-
 }
