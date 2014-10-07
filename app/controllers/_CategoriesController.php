@@ -1,6 +1,6 @@
 <?php
 
-class CategoriesController extends BaseController {
+class _CategoriesController extends BaseController {
 
 	public function __construct() {
 		parent::__construct();

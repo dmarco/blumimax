@@ -16,25 +16,40 @@ body {
   margin-top: 50px;
 }
 
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
 
+
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
+
 
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
+
+
+.list-group {
+  margin: 0;
+  padding: 0 0 0 5px;
+}
+.radio, 
+.checkbox {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  min-height: 0px;
+}
 .list-group-item {
   border: 0px solid #ddd;
-  padding: 10px 0 10px 25px;
+  padding: 2px 0 2px 15px;
 }
 .list-group-item a {
   margin-right: 10px;

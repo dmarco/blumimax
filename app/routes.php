@@ -18,15 +18,19 @@ Route::get('/', function()
 });
 //Route::get('/', array('uses'=>'StoreController@getIndex')); // Descomentar cuando esté productivo
 Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando esté productivo
-Route::controller('admin/categories', 'CategoriesController');
+// Route::controller('admin/categories', 'CategoriesController');
 Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
-Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriasController@create'));
-Route::get('/delete/{id}', array('uses'=>'CategoriasController@destroy'));
-Route::get('/getdepth/{id}', array('uses'=>'CategoriasController@store'));
-Route::get('/list', array('uses'=>'CategoriasController@show'));
+
+// Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriesController@create'));
+// Route::get('/getdepth/{id}', array('uses'=>'CategoriesController@store'));
+Route::get('/admin/categories', array('uses'=>'CategoriesController@index'));
+Route::get('/admin/categories/create', array('uses'=>'CategoriesController@create'));
+Route::get('/admin/categories/delete/{id}', array('uses'=>'CategoriesController@destroy'));
+
+
 
 
 
