@@ -32,6 +32,14 @@ body {
   text-shadow: none;
 }
 
+.list-group-item {
+  border: 0px solid #ddd;
+  padding: 10px 0 10px 25px;
+}
+.list-group-item a {
+  margin-right: 10px;
+}
+
 
 #footer {
   background-color: #333;
