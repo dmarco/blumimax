@@ -68,13 +68,13 @@ class CategoriesController extends BaseController {
 
 			// return View::make('admin.categories.index')
 			return Redirect::to('/admin/categories')
-				->with('message', 'Category Created')
+				->with('message', 'Categoría Creada')
 				->with('alert-type', 'alert-success');
 		}
 
 		// return View::make('admin.categories.index')
 		return Redirect::to('admin/categories')
-			->with('message', 'Something went wrong')
+			->with('message', 'Hubo un error')
 			->with('alert-type', 'alert-danger')
 			->withErrors($validator)
 			->withInput();
@@ -122,7 +122,7 @@ class CategoriesController extends BaseController {
 		$node->delete();
 		return Redirect::to('admin/categories')
 		// return View::make('admin.categories.index')
-			->with('message', 'Category Deleted')
+			->with('message', 'Categoría Eliminada')
 			->with('alert-type', 'alert-success');
 
 	}

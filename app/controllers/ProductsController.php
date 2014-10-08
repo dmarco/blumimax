@@ -37,12 +37,12 @@ class ProductsController extends BaseController {
 			$product->image = 'img/products/' . $filename;
 			$product->save();
 
-			return Redirect::to('admin/products/index')
+			return Redirect::to('admin/products')
 				->with('message', 'Product Created')
 				->with('alert-type', 'alert-success');
 		}
 
-		return Redirect::to('admin/products/index')
+		return Redirect::to('admin/products')
 			->with('message', 'Something went wrong')
 			->with('alert-type', 'alert-danger')
 			->withErrors($validator)
@@ -55,12 +55,12 @@ class ProductsController extends BaseController {
 		if ($product) {
 			File::delete('public/'.$product->image);
 			$product->delete();
-			return Redirect::to('admin/products/index')
+			return Redirect::to('admin/products')
 				->with('message', 'Product Deleted')
 				->with('alert-type', 'alert-success');
 		}
 
-		return Redirect::to('admin/products/index')
+		return Redirect::to('admin/products')
 			->with('message', 'Something went wrong, please try again')
 			->with('alert-type', 'alert-danger');
 	}
@@ -71,9 +71,9 @@ class ProductsController extends BaseController {
 		if ($product) {
 			$product->availability = Input::get('availability');
 			$product->save();
-			return Redirect::to('admin/products/index')->with('message', 'Product Updated')->with('alert-type', 'alert-success');
+			return Redirect::to('admin/products')->with('message', 'Product Updated')->with('alert-type', 'alert-success');
 		}
 
-		return Redirect::to('admin/products/index')->with('message', 'Invalid Product')->with('alert-type', 'alert-danger');
+		return Redirect::to('admin/products')->with('message', 'Invalid Product')->with('alert-type', 'alert-danger');
 	}
 }

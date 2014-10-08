@@ -26,7 +26,7 @@
 
 	{{ Form::open(array( 'url' => '/admin/categories/create' , 'method' => 'get' )) }}
 	<p>
-		<label for="nombre">Pertenece a:</label>
+		<label for="nombre">Seleccione la Categoría padre:</label>
 		{{ $select }}
 		<!-- {{ Form::select('category_id', Category::lists('name','id'), array('class' => 'form-control')) }} -->
 	</p>

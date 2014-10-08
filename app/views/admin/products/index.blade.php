@@ -18,6 +18,7 @@
           <tr>
             <th>Imagen</th>
             <th>Nombre</th>
+            <th>Categoría</th>
             <th>Eliminar Productos</th>
             <th>Estado</th>
             <th>Modificar Estado</th>
@@ -30,6 +31,13 @@
           	{{ Form::hidden('id', $product->id) }}
             <td>{{ HTML::image($product->image, $product->title, array('width'=>'50')) }} </td>
             <td>{{ $product->title }}</td>
+            
+            @if( Category::find($product->category_id) )
+            <td>{{ Category::find($product->category_id)->name }}</td>
+            @else
+            <td>NULL</td>
+            @endif
+
             <td><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
             {{ Form::close() }}
 
