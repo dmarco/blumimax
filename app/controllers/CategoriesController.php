@@ -52,18 +52,11 @@ class CategoriesController extends BaseController {
 
 	public function create()
 	{
+		
 		$name = Input::get('name');
 		$parent_id = Input::get('taker');
-		// $node = Category::create(['name' => $name]);
-		// $node->parent_id = $parent_id;
-		// $node->save();
-
-		// return Redirect::to('/admin/categories')
-		// 	->with('message', 'Category Created')
-		// 	->with('alert-type', 'alert-success');
 
 		$validator = Validator::make(Input::all(), Category::$rules);
-
 
 		if ($validator->passes()) {
 			$category = Category::create(['name' => $name]);
