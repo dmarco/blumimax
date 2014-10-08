@@ -5,9 +5,11 @@ class CategoriesController extends BaseController {
 
 
 	public function __construct() {
+
 		parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
 		$this->beforeFilter('admin');
+
 	}
 
 
@@ -46,35 +48,31 @@ class CategoriesController extends BaseController {
     return View::make('admin.categories.index')
 			->with('list', $list)
 			->with('select', $select);
+
 	}
 
 
 
 	public function create()
 	{
+
 		$name = Input::get('name');
 		$parent_id = Input::get('taker');
-		// $node = Category::create(['name' => $name]);
-		// $node->parent_id = $parent_id;
-		// $node->save();
-
-		// return Redirect::to('/admin/categories')
-		// 	->with('message', 'Category Created')
-		// 	->with('alert-type', 'alert-success');
 
 		$validator = Validator::make(Input::all(), Category::$rules);
-
 
 		if ($validator->passes()) {
 			$category = Category::create(['name' => $name]);
 			$category->parent_id = $parent_id;
 			$category->save();
 
+			// return View::make('admin.categories.index')
 			return Redirect::to('/admin/categories')
 				->with('message', 'Category Created')
 				->with('alert-type', 'alert-success');
 		}
 
+		// return View::make('admin.categories.index')
 		return Redirect::to('admin/categories')
 			->with('message', 'Something went wrong')
 			->with('alert-type', 'alert-danger')
@@ -87,9 +85,10 @@ class CategoriesController extends BaseController {
 
 	public function store($id)
 	{
-		//
+	
 		$node = Category::find($id);
 		return $node->getLevel();
+
 	}
 
 
@@ -118,17 +117,21 @@ class CategoriesController extends BaseController {
 
 	public function destroy($id)
 	{
-		//
+		
 		$node = Category::find($id);
 		$node->delete();
-		// return $node->getDescendantsAndSelf();
-		return Redirect::to('/admin/categories');
+		return Redirect::to('admin/categories')
+		// return View::make('admin.categories.index')
+			->with('message', 'Category Deleted')
+			->with('alert-type', 'alert-success');
+
 	}
 
 
 
 	public function getChildrenList($children) 
   {
+
     $list = '<ul class="list-group">';
     foreach($children as $child){
 			
@@ -146,12 +149,14 @@ class CategoriesController extends BaseController {
     }
     $list .= '</ul>';
     return $list;
+
 	}
 
 
 
 	public function getChildrenSelect($children) 
   {
+
     $select = '<ul class="list-group">';
     foreach($children as $child){
 			
@@ -167,6 +172,7 @@ class CategoriesController extends BaseController {
     }
     $select .= '</ul>';
     return $select;
+
 	}
 
 
