@@ -16,6 +16,11 @@ class Category extends Node {
    */
   protected $table = 'categories';
 
+
+  public function products() {
+    return $this->belongsToMany('Product', 'products_categories');
+  }
+
   //////////////////////////////////////////////////////////////////////////////
 
   //

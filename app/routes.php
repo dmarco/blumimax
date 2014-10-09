@@ -34,6 +34,9 @@ Route::get('/admin/products', array('uses'=>'ProductsController@getIndex'));
 Route::get('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));
 
 
+Route::get('/admin/test', array('uses'=>'TestController@index'));
+
+
 
 
 
