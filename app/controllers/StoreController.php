@@ -19,9 +19,11 @@ class StoreController extends BaseController {
 	}
 
 	public function getCategory($cat_id) {
+		$category = Category::find($cat_id);
+		$products = Product::categorized($category)->paginate(6);
 		return View::make('store.category')
-			->with('products', Product::where('category_id', '=', $cat_id)->paginate(8))
-			->with('category', Category::find($cat_id));
+			->with('products', $products )
+			->with('category', $category );
 	}
 
 	public function getSearch() {

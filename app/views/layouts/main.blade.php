@@ -46,17 +46,59 @@
               
               <!-- Left -->
               <ul class="nav navbar-nav">
-                <!-- <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li> -->
+                
                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    
+                    <li class="dropdown dropdown-submenu">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hombres</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="#">Link 1</a>
+                        </li>
+                        
+                        <li class="dropdown dropdown-submenu">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a href="#">Link 3</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                      </ul>
+                    </li>
+
+                    <li class="dropdown dropdown-submenu">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mujeres</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="#">Link 1</a>
+                        </li>
+                        
+                        <li class="dropdown dropdown-submenu">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a href="#">Link 3</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+                <!-- <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     @foreach($catnav as $cat)
                       <li>{{ HTML::link('/store/category/'.$cat->id, $cat->name) }}</li>
                     @endforeach
                   </ul>
-                </li>
+                </li> -->
 
                 {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }}
                 <!-- <form class="navbar-form navbar-right"> -->

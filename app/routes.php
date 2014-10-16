@@ -25,6 +25,9 @@ Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
 
+Route::get('/store/category/{id}', array('uses'=>'StoreController@getCategory'));
+
+
 // ADMIN ROUTERS ###################################################################
 
 // Categories
