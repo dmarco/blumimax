@@ -24,14 +24,19 @@ Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
-// Route::get('/create/{parent_id}/{name}', array('uses'=>'CategoriesController@create'));
-// Route::get('/getdepth/{id}', array('uses'=>'CategoriesController@store'));
+
+// ADMIN ROUTERS ###################################################################
+
+// Categories
 Route::get('/admin/categories', array('uses'=>'CategoriesController@index'));
 Route::get('/admin/categories/create', array('uses'=>'CategoriesController@create'));
 Route::get('/admin/categories/delete/{id}', array('uses'=>'CategoriesController@destroy'));
 
-Route::get('/admin/products', array('uses'=>'ProductsController@getIndex'));
-Route::get('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));
+// Products
+Route::get('/admin/products', array('uses'=>'ProductsController@index'));
+Route::post('/admin/products/create','ProductsController@create');
+Route::post('/admin/products/destroy','ProductsController@destroy');
+Route::post('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));
 
 
 Route::get('/admin/test', array('uses'=>'TestController@index'));

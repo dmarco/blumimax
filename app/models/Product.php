@@ -6,6 +6,15 @@ class Product extends Model {
 
   protected $table = 'products';
 
+  public static $rules = array(
+   'category_id'=>'required',
+   'title'=>'required|min:2',
+   'description'=>'required|min:20',
+   'price'=>'required|numeric',
+   'availability'=>'integer',
+   'image'=>'required|image|mimes:jpeg,jpg,bmp,png,gif'
+ );
+
   public function categories() {
     return $this->belongsToMany('Category', 'products_categories');
   }

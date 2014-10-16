@@ -27,25 +27,21 @@
         <tbody>
         	@foreach($products as $product)
           <tr>
-          	{{ Form::open(array('url'=>'/admin/products/destroy', 'class'=>'form-inline')) }}
-          	{{ Form::hidden('id', $product->id) }}
-            <td>{{ HTML::image($product->image, $product->title, array('width'=>'50')) }} </td>
-            <td>{{ $product->title }}</td>
-            
-            @if( Category::find($product->category_id) )
-            <td>{{ Category::find($product->category_id)->name }}</td>
-            @else
-            <td>NULL</td>
-            @endif
 
-            <td><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+          	{{ Form::open(array('url'=>'/admin/products/destroy', 'class'=>'form-inline')) }}
+	          	{{ Form::hidden('product_id', $product->id) }}
+	            <td>{{ HTML::image($product->image, $product->title, array('width'=>'50')) }} </td>
+	            <td>{{ $product->title }}</td>
+	            <td>{{ DB::table('categories')->where('id', '=', DB::table('products_categories')->where('product_id', '=', $product->id)->pluck('category_id'))->pluck('name') }}</td>
+	            <td><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
             {{ Form::close() }}
 
             {{ Form::open(array('url'=>'/admin/products/toggle-availability', 'class'=>'form-inline'))}}
-						{{ Form::hidden('id', $product->id) }}
-            <td>{{ Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability) }}</td>
-            <td><button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
+							{{ Form::hidden('id', $product->id) }}
+	            <td>{{ Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability) }}</td>
+	            <td><button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
             {{ Form::close() }}
+            
           </tr>
           @endforeach
         </tbody>
@@ -65,25 +61,26 @@
 		</div><!-- end form-errors -->
 		@endif
 
-		{{ Form::open(array('url'=>'/admin/products/create', 'files'=>true)) }}
+
+		{{ Form::open(array( 'url' => '/admin/products/create' , 'files'=>true )) }}
 		<p>
-			{{ Form::label('category_id', 'Categoría') }}
-			{{ Form::select('category_id', $categories, array('class'=>'form-control')) }}
+			<label for="nombre">Categoría a la que pertenece el producto</label>
+			{{ $select }}
 		</p>
 		<p>
-			{{ Form::label('título') }}
+			<label for="title">título</label>
 			{{ Form::text('title', null, array('class'=>'form-control')) }}
 		</p>
 		<p>
-			{{ Form::label('descripción') }}
+			<label for="description">Descripción</label>
 			{{ Form::textarea('description', null, array('class'=>'form-control')) }}
 		</p>
 		<p>
-			{{ Form::label('precio') }}
+			<label for="price">Precio</label>
 			{{ Form::text('price', null, array('class'=>'form-control')) }}
 		</p>
 		<p>
-			{{ Form::label('image', 'Elegir imagen') }}
+			<label for="image">Seleccionar imagen</label>
 			{{ Form::file('image') }}
 		</p>
 		{{ Form::submit('Crear Producto', array('class'=>'btn btn-success')) }}
