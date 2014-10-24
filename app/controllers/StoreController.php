@@ -18,11 +18,14 @@ class StoreController extends BaseController {
 		return View::make('store.view')->with('product', Product::find($id));
 	}
 
-	public function getCategory($cat_id) {
-		$category = Category::find($cat_id);
+	public function getCategory($cat_name) {
+		// $category = Category::find($cat_name);
+		$category = Category::where('name', '=', $cat_name)->first();
+		$categories = $category->getDescendants(array('id', 'parent_id', 'name'));
 		$products = Product::categorized($category)->paginate(6);
 		return View::make('store.category')
 			->with('products', $products )
+			->with('categories', $categories )
 			->with('category', $category );
 	}
 

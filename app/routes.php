@@ -25,7 +25,8 @@ Route::controller('users', 'UsersController');
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
 
-Route::get('/store/category/{id}', array('uses'=>'StoreController@getCategory'));
+Route::get('/{cat_name}', array('uses'=>'StoreController@getCategory'));
+Route::get('/{cat_name}/{subcat_name}', array('uses'=>'StoreController@getSubCategory'));
 
 
 // ADMIN ROUTERS ###################################################################

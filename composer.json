@@ -11,7 +11,8 @@
 		"moltin/cart": "dev-master",
 		"moltin/laravel-cart": "dev-master",
 		"baum/baum": "~1.0",
-		"way/generators": "~2.0"
+		"way/generators": "~2.0",
+		"cviebrock/eloquent-sluggable": "2.*"
 	},
 	"autoload": {
 		"classmap": [

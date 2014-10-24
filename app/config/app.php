@@ -125,6 +125,7 @@ return array(
 		'Moltin\Cart\CartServiceProvider',
 		'Baum\BaumServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 	),
 

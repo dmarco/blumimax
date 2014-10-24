@@ -8,17 +8,13 @@
   <div class="row row-offcanvas row-offcanvas-right">
   
     <div class="col-xs-6 col-sm-3">
+
+      <!-- {{ $categories }} -->
       
       <div class="list-group">
-        <a href="#" class="list-group-item active">Subcategoría <span class="badge">14</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">7</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">4</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">32</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">21</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">35</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">12</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">8</span></a>
-        <a href="#" class="list-group-item">Subcategoría <span class="badge">3</span></a>
+      @foreach($categories as $cat)
+        <a href="{{ $cat->name }}" class="list-group-item">{{ $cat->name }} <!-- <span class="badge">14</span> --></a>
+      @endforeach
       </div>
 
     </div>

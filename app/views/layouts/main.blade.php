@@ -50,55 +50,23 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    
-                    <li class="dropdown dropdown-submenu">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hombres</a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a href="#">Link 1</a>
-                        </li>
+
+                    @foreach($catnav as $cat)
+                      <li class="dropdown dropdown-submenu">
+                        {{ HTML::link('/'.$cat->name, $cat->name, array('class'=>'dropdown-toggle', 'data-toggle'=>'dropdown')) }}
                         
-                        <li class="dropdown dropdown-submenu">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a href="#">Link 3</a>
-                            </li>
-                          </ul>
-                        </li>
-
-                      </ul>
-                    </li>
-
-                    <li class="dropdown dropdown-submenu">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mujeres</a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a href="#">Link 1</a>
-                        </li>
-                        
-                        <li class="dropdown dropdown-submenu">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a href="#">Link 3</a>
-                            </li>
-                          </ul>
-                        </li>
-
-                      </ul>
-                    </li>
+                        <ul class="dropdown-menu">
+                          @foreach($cat->children()->get() as $subcat)
+                          <li>
+                            {{ HTML::link('/'.$subcat->name, $subcat->name) }}
+                          </li>
+                          @endforeach
+                        </ul>
+                      </li>
+                    @endforeach
 
                   </ul>
                 </li>
-                <!-- <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    @foreach($catnav as $cat)
-                      <li>{{ HTML::link('/store/category/'.$cat->id, $cat->name) }}</li>
-                    @endforeach
-                  </ul>
-                </li> -->
 
                 {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }}
                 <!-- <form class="navbar-form navbar-right"> -->
