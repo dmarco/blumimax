@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Oct 24, 2014 at 06:30 PM
+-- Generation Time: Oct 27, 2014 at 05:19 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -42,23 +42,23 @@ CREATE TABLE `categories` (
   KEY `categories_parent_id_index` (`parent_id`),
   KEY `categories_lft_index` (`lft`),
   KEY `categories_rgt_index` (`rgt`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `lft`, `rgt`, `depth`, `created_at`, `updated_at`, `name`) VALUES
-(2, NULL, 1, 12, 0, '2014-10-02 22:42:27', '2014-10-08 23:44:40', 'Hombres'),
-(5, NULL, 13, 58, 0, '2014-10-02 23:02:45', '2014-10-16 17:26:33', 'Mujeres'),
-(6, 2, 2, 11, 1, '2014-10-02 23:03:51', '2014-10-08 23:44:40', 'Ropa Interior'),
-(17, 6, 3, 8, 2, '2014-10-02 23:58:12', '2014-10-08 23:44:40', 'Boxer'),
-(21, 5, 14, 23, 1, '2014-10-06 21:14:12', '2014-10-16 17:26:33', 'Ropa Interior'),
-(44, 21, 15, 16, 2, '2014-10-07 22:25:22', '2014-10-08 23:44:40', 'Conjuntos'),
-(47, 21, 21, 22, 2, '2014-10-08 22:41:22', '2014-10-08 23:44:40', 'Medias'),
-(50, 6, 9, 10, 2, '2014-10-08 23:44:01', '2014-10-08 23:44:40', 'Slip'),
-(51, 17, 4, 5, 3, '2014-10-08 23:44:30', '2014-10-08 23:44:30', 'Lycra'),
-(52, 17, 6, 7, 3, '2014-10-08 23:44:40', '2014-10-08 23:44:40', 'Algodón');
+(3, NULL, 2, 29, 0, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Computers'),
+(4, 3, 3, 18, 1, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Laptops'),
+(5, 4, 4, 5, 2, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'PC Laptops'),
+(6, 4, 6, 17, 2, '2014-10-02 23:03:51', '2014-10-27 22:52:02', 'Macbooks (Air/Pro)'),
+(7, 3, 19, 28, 1, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Desktops'),
+(9, NULL, 30, 31, 0, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Cell Phones'),
+(54, 7, 20, 21, 2, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Towers Only'),
+(55, 7, 22, 23, 2, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Desktop Packages'),
+(56, 7, 24, 25, 2, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'All-in-One Computers'),
+(57, 7, 26, 27, 2, '2014-10-27 22:39:12', '2014-10-27 22:52:02', 'Gaming Desktops');
 
 -- --------------------------------------------------------
 
@@ -104,16 +104,14 @@ CREATE TABLE `products` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `availability`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Boxer Adidas', 'blablablablablablalbaa', 80.99, 1, 'img/products/2014-10-16-16:16:45-calzoncillos+boxer+importados+dolce+gabbana+adidas+hugo+boss+burberry+buenos+aires+capital+federal+argentina__616AAC_1.jpg', '2014-10-16 19:16:45', '2014-10-16 19:40:25'),
-(3, 'Boxer Adidas', 'Algodón Algodón Algodón Algodón', 56.99, 1, 'img/products/2014-10-16-16:37:08-calzoncillos+boxer+importados+dolce+gabbana+adidas+hugo+boss+burberry+buenos+aires+capital+federal+argentina__616AAC_1.jpg', '2014-10-16 19:37:08', '2014-10-16 19:40:31'),
-(4, 'asd', 'asdasdadasdadadasdasdasd', 30.00, 1, 'img/products/2014-10-16-18:57:22-calzoncillos+boxer+importados+dolce+gabbana+adidas+hugo+boss+burberry+buenos+aires+capital+federal+argentina__616AAC_1.jpg', '2014-10-16 21:57:22', '2014-10-16 21:57:22');
+(6, 'Sony Vaio', 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen', 5999.99, 1, 'img/products/2014-10-27-19:54:19-download.jpeg', '2014-10-27 22:54:19', '2014-10-27 22:54:19');
 
 -- --------------------------------------------------------
 
@@ -132,9 +130,7 @@ CREATE TABLE `products_categories` (
 --
 
 INSERT INTO `products_categories` (`product_id`, `category_id`) VALUES
-(1, 51),
-(3, 52),
-(4, 51);
+(6, 5);
 
 -- --------------------------------------------------------
 
