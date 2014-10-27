@@ -21,7 +21,7 @@ class StoreController extends BaseController {
 	public function getCategory($cat_name) {
 		// $category = Category::find($cat_name);
 		$category = Category::where('name', '=', $cat_name)->first();
-		$categories = $category->getDescendants(array('id', 'parent_id', 'name'));
+		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name'));
 		$products = Product::categorized($category)->paginate(6);
 		return View::make('store.category')
 			->with('products', $products )
