@@ -55,9 +55,9 @@ class ProductsController extends BaseController {
 			$product->availability = 1;
 
 			$image = Input::file('image');
-			$filename = time() . "." . $image->getClientOriginalName();
+			$filename = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
 			$path = public_path('img/products/' . $filename);
-			Image::make($image->getRealPath())->resize(468, 249)->save(public_path($path));
+			Image::make($image->getRealPath())->resize(468, 249)->save($path);
 			$product->image = 'img/products/' . $filename;
 			
 			$product->save();
