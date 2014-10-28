@@ -38,6 +38,7 @@ Route::get('/admin/categories/delete/{id}', array('uses'=>'CategoriesController@
 
 // Products
 Route::get('/admin/products', array('uses'=>'ProductsController@index'));
+Route::get('/admin/products/edit','ProductsController@edit');
 Route::post('/admin/products/create','ProductsController@create');
 Route::post('/admin/products/destroy','ProductsController@destroy');
 Route::post('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));

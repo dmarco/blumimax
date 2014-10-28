@@ -56,12 +56,11 @@ class ProductsController extends BaseController {
 			$product->availability = 1;
 
 			$image = Input::file('image');
-	        $filename = time().".".$image->getClientOriginalName();
-	        $path = 'img/products/' . $filename;
-	        // dd(is_writable($path));
-	        Image::make($image->getRealPath())->resize(468, 249)->save($path);
-	        $product->image = 'img/products/'. $filename;
-	        $product->save();
+      $filename = time().".".$image->getClientOriginalName();
+      $path = 'img/products/' . $filename;
+      Image::make($image->getRealPath())->resize(468, 249)->save($path);
+      $product->image = 'img/products/'. $filename;
+      $product->save();
 
 			$category_id = Input::get('category_id');
 			$product_id = $product->id;
@@ -79,6 +78,35 @@ class ProductsController extends BaseController {
 			->with('alert-type', 'alert-danger')
 			->withErrors($validator)
 			->withInput();
+
+	}
+
+	public function edit()
+	{
+
+		// Make List Object
+		$root = DB::table('categories')->where('parent_id', '=', NULL)->get();
+		$select = '<ul class="list-group">';
+    
+    foreach($root as $cat){
+    	
+			$children = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
+    	
+			$select .= '<li class="list-group-item">';
+			$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
+
+			if(count($children) > 0) {
+        $select .= $this->getChildrenSelect($children);
+	    }
+
+	    $select .= '</li>';
+
+    }
+    $select .= '</ul>';	
+
+		return View::make('admin.products.edit')
+    	->with('products', Product::all())
+			->with('select', $select);
 
 	}
 

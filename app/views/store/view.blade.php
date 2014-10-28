@@ -60,23 +60,36 @@
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
             <h1>{{ $product->title }}</h1>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">  
             <p>${{ $product->price }}</p>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> 
             <p>{{ $product->description }}</p>
-            <p>
-              Disponibilidad: 
-              <span class="{{ Availability::displayClass($product->availability) }}">
-                {{ Availability::display($product->availability) }}
-              </span>
-            </p>
-            
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+            Disponibilidad: 
+            <span class="{{ Availability::displayClass($product->availability) }}">
+              <b>{{ Availability::display($product->availability) }}</b> 
+            </span>
+            <br /><br />   
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
             {{ Form::open(array('url'=>'/store/addtocart')) }}
-            {{ Form::label('quantity', 'Cantidad') }}
-            {{ Form::text('quantity', 1, array('maxlength'=>'2', 'class'=>'form-control')) }}
+            <div class="row">
+              <div class="col-xs-2">
+                {{ Form::label('quantity', 'Cantidad') }}
+              </div>
+              <div class="col-xs-2">
+                {{ Form::text('quantity', 1, array('maxlength'=>'2', 'class'=>'form-control')) }}
+              </div>
+            </div>
             {{ Form::hidden('id', $product->id) }}
-
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+            <br />  
             <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart"></i> AGREGAR</button>
             {{ Form::close() }}
-
           </div>
         
         </div>
