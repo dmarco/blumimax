@@ -11,6 +11,7 @@ class Product extends Model {
    'title'=>'required|min:2',
    'description'=>'required|min:20',
    'price'=>'required|numeric',
+   'pref_id'=>'required',
    'availability'=>'integer',
    'image'=>'required|image|mimes:jpeg,jpg,bmp,png,gif'
  );

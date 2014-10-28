@@ -49,17 +49,25 @@ class ProductsController extends BaseController {
 
 		if ($validator->passes()) {
 			
-			$product = new Product;
-			$product->title = Input::get('title');
-			$product->description = Input::get('description');
-			$product->price = Input::get('price');
-			$product->availability = 1;
+			$product 									= new Product;
+			$product->title 					= Input::get('title');
+			$product->description 		= Input::get('description');
+			$product->price 					= Input::get('price');
+			$product->pref_id 				= Input::get('pref_id');
+			$product->availability 		= 1;
 
 			$image = Input::file('image');
       $filename = time().".".$image->getClientOriginalName();
       $path = 'img/products/' . $filename;
       Image::make($image->getRealPath())->resize(468, 249)->save($path);
+			
+			$manual = Input::file('manual');
+			$technical_data = Input::file('technical-data');
+
       $product->image = 'img/products/'. $filename;
+			$product->manual 					= time().".".$manual->getClientOriginalName();
+			$product->technical_data 	= time().".".$technical_data->getClientOriginalName();
+      
       $product->save();
 
 			$category_id = Input::get('category_id');

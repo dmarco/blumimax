@@ -80,8 +80,20 @@
 			{{ Form::text('price', null, array('class'=>'form-control')) }}
 		</p>
 		<p>
-			<label for="image">Seleccionar imagen</label>
+			<label for="pref_id">Id MercadoPago</label>
+			{{ Form::text('pref_id', null, array('class'=>'form-control')) }}
+		</p>
+		<p>
+			<label for="image">Seleccionar Imagen</label>
 			{{ Form::file('image') }}
+		</p>
+		<p>
+			<label for="manual">Seleccionar Manual</label>
+			{{ Form::file('manual') }}
+		</p>
+		<p>
+			<label for="technical-data">Seleccionar Ficha Técnica</label>
+			{{ Form::file('technical-data') }}
 		</p>
 		{{ Form::submit('Crear Producto', array('class'=>'btn btn-success')) }}
 		{{ Form::close() }}
