@@ -48,6 +48,7 @@ class ProductsController extends BaseController {
 		$validator = Validator::make(Input::all(), Product::$rules);
 
 		if ($validator->passes()) {
+			
 			$product = new Product;
 			$product->title = Input::get('title');
 			$product->description = Input::get('description');
@@ -55,12 +56,12 @@ class ProductsController extends BaseController {
 			$product->availability = 1;
 
 			$image = Input::file('image');
-			$filename = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
-			$path = public_path('img/products/' . $filename);
-			Image::make($image->getRealPath())->resize(468, 249)->save($path);
-			$product->image = 'img/products/' . $filename;
-			
-			$product->save();
+	        $filename = time().".".$image->getClientOriginalName();
+	        $path = 'img/products/' . $filename;
+	        // dd(is_writable($path));
+	        Image::make($image->getRealPath())->resize(468, 249)->save($path);
+	        $product->image = 'img/products/'. $filename;
+	        $product->save();
 
 			$category_id = Input::get('category_id');
 			$product_id = $product->id;

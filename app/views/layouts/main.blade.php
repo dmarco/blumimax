@@ -52,9 +52,9 @@
                   <ul class="dropdown-menu">
 
                     @foreach($catnav as $cat)
+                      @if ( ! $cat->children()->get()->isEmpty() )
                       <li class="dropdown dropdown-submenu">
                         {{ HTML::link('/'.$cat->slug, $cat->name) }}
-                        
                         <ul class="dropdown-menu">
                           @foreach($cat->children()->get() as $subcat)
                           <li>
@@ -63,6 +63,11 @@
                           @endforeach
                         </ul>
                       </li>
+                      @else
+                      <li>
+                        {{ HTML::link('/'.$cat->slug, $cat->name) }}
+                      </li>
+                      @endif
                     @endforeach
 
                   </ul>
