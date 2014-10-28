@@ -53,12 +53,12 @@
 
                     @foreach($catnav as $cat)
                       <li class="dropdown dropdown-submenu">
-                        {{ HTML::link('/'.$cat->name, $cat->name) }}
+                        {{ HTML::link('/'.$cat->slug, $cat->name) }}
                         
                         <ul class="dropdown-menu">
                           @foreach($cat->children()->get() as $subcat)
                           <li>
-                            {{ HTML::link('/'.$subcat->name, $subcat->name) }}
+                            {{ HTML::link('/'.$subcat->slug, $subcat->name) }}
                           </li>
                           @endforeach
                         </ul>

@@ -13,7 +13,7 @@
       
       <div class="list-group">
       @foreach($categories as $cat)
-        <a href="{{ $cat->name }}" class="list-group-item">{{ $cat->name }} <!-- <span class="badge">14</span> --></a>
+        <a href="{{ $cat->slug }}" class="list-group-item">{{ $cat->name }} <!-- <span class="badge">14</span> --></a>
       @endforeach
       </div>
 
