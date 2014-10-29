@@ -17,7 +17,7 @@
 		</div><!-- end form-errors -->
 		@endif
 
-
+		<!-- {{ $test }} -->
 		{{ Form::open(array( 'url' => '/admin/products/modify' , 'files'=>true )) }}
 		<p>
 			<label for="nombre">Categoría a la que pertenece el producto</label>
@@ -25,15 +25,15 @@
 		</p>
 		<p>
 			<label for="title">título</label>
-			{{ Form::text('title', null, array('class'=>'form-control')) }}
+			{{ Form::text('title', $product->title, array('class'=>'form-control')) }}
 		</p>
 		<p>
 			<label for="description">Descripción</label>
-			{{ Form::textarea('description', null, array('class'=>'form-control')) }}
+			{{ Form::textarea('description', $product->description, array('class'=>'form-control')) }}
 		</p>
 		<p>
 			<label for="price">Precio</label>
-			{{ Form::text('price', null, array('class'=>'form-control')) }}
+			{{ Form::text('price', $product->price, array('class'=>'form-control')) }}
 		</p>
 		<p>
 			<label for="image">Seleccionar imagen</label>

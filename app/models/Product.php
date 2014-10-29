@@ -13,6 +13,8 @@ class Product extends Model {
    'price'=>'required|numeric',
    'pref_id'=>'required',
    'availability'=>'integer',
+   'manual'=>'mimes:pdf,doc,docx|max:1000',
+   'technical_data'=>'mimes:pdf,doc,docx|max:1000',
    'image'=>'required|image|mimes:jpeg,jpg,bmp,png,gif'
  );
 

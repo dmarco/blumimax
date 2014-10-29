@@ -92,8 +92,8 @@
 			{{ Form::file('manual') }}
 		</p>
 		<p>
-			<label for="technical-data">Seleccionar Ficha Técnica</label>
-			{{ Form::file('technical-data') }}
+			<label for="technical_data">Seleccionar Ficha Técnica</label>
+			{{ Form::file('technical_data') }}
 		</p>
 		{{ Form::submit('Crear Producto', array('class'=>'btn btn-success')) }}
 		{{ Form::close() }}

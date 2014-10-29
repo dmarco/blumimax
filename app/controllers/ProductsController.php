@@ -26,7 +26,7 @@ class ProductsController extends BaseController {
 			$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
 
 			if(count($children) > 0) {
-        $select .= $this->getChildrenSelect($children);
+        $select .= $this->getChildrenSelect($children, NULL);
 	    }
 
 	    $select .= '</li>';
@@ -56,18 +56,25 @@ class ProductsController extends BaseController {
 			$product->pref_id 				= Input::get('pref_id');
 			$product->availability 		= 1;
 
-			$image = Input::file('image');
-      $filename = time().".".$image->getClientOriginalName();
-      $path = 'img/products/' . $filename;
+			$image 										= Input::file('image');
+      $filename 								= time().".".$image->getClientOriginalName();
+      $path 										= 'img/products/' . $filename;
       Image::make($image->getRealPath())->resize(468, 249)->save($path);
-			
-			$manual = Input::file('manual');
-			$technical_data = Input::file('technical-data');
-
       $product->image = 'img/products/'. $filename;
-			$product->manual 					= time().".".$manual->getClientOriginalName();
-			$product->technical_data 	= time().".".$technical_data->getClientOriginalName();
-      
+
+			if (Input::hasFile('manual'))
+			{
+				$manual = Input::file('manual');
+				$manual->move('img/manual', time().".".$manual->getClientOriginalName());
+				$product->manual = 'img/manual/'. time().".".$manual->getClientOriginalName();
+			}
+			if (Input::hasFile('technical_data'))
+			{
+				$technical_data = Input::file('technical_data');
+				$technical_data->move('img/technical_data', time().".".$technical_data->getClientOriginalName());
+				$product->technical_data 	= 'img/technical_data/'. time().".".$technical_data->getClientOriginalName();
+			}
+
       $product->save();
 
 			$category_id = Input::get('category_id');
@@ -89,8 +96,12 @@ class ProductsController extends BaseController {
 
 	}
 
-	public function edit()
+	public function edit($id)
 	{
+    
+    // Categoría
+		$cat_id = DB::table('products_categories')->where('product_id', '=', $id)->pluck('category_id');
+		// return $cat_id;
 
 		// Make List Object
 		$root = DB::table('categories')->where('parent_id', '=', NULL)->get();
@@ -101,32 +112,53 @@ class ProductsController extends BaseController {
 			$children = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
     	
 			$select .= '<li class="list-group-item">';
-			$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
+
+			if($cat->id == $cat_id){
+				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'" checked>'.$cat->name.'</label></div>';
+			}else{
+				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
+			}
+
 
 			if(count($children) > 0) {
-        $select .= $this->getChildrenSelect($children);
+        $select .= $this->getChildrenSelect($children, $cat_id);
 	    }
 
 	    $select .= '</li>';
 
     }
-    $select .= '</ul>';	
+    $select .= '</ul>';
 
+
+    // Producto
+    $product = Product::find($id);
+
+		// Armo Vista
 		return View::make('admin.products.edit')
-    	->with('products', Product::all())
+    	->with('test', $cat_id)
+    	->with('product', $product)
 			->with('select', $select);
 
 	}
 
 	public function destroy() {
+
 		$product = Product::find(Input::get('product_id'));
 		
 		$product_id = $product->id;
 		$category_id = Input::get('category_id');
 		$this->deassociateProductToCategory($category_id , $product_id);
 
+		if ($product->manual !== '' ) {
+			File::delete(public_path()."/".$product->manual);
+		}
+
+		if ($product->technical_data !== '' ) {
+			File::delete(public_path()."/".$product->technical_data);
+		}
+
 		if ($product) {
-			File::delete('public/'.$product->image);
+			File::delete(public_path()."/".$product->image);
 			$product->delete();
 			return Redirect::to('admin/products')
 				->with('message', 'Product Deleted')
@@ -172,7 +204,7 @@ class ProductsController extends BaseController {
 	}
 
 
-	public function getChildrenSelect($children) 
+	public function getChildrenSelect($children, $cat_id) 
   {
 
     $select = '<ul class="list-group">';
@@ -181,10 +213,16 @@ class ProductsController extends BaseController {
 			$children = DB::table('categories')->where('parent_id', '=', $child->id)->get();
   		
   		$select .= '<li class="list-group-item">';
-			$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$child->id.'">'.$child->name.'</label></div>';
+
+  		if($child->id == $cat_id){
+				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$child->id.'" checked>'.$child->name.'</label></div>';
+			}else{
+				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$child->id.'">'.$child->name.'</label></div>';
+			}
+			
 
       if(count($children) > 0) {
-        $select .= $this->getChildrenSelect($children);
+        $select .= $this->getChildrenSelect($children, $cat_id);
       }
 
     }
