@@ -61,8 +61,8 @@
           {{ HTML::image($product->image, $product->title, array('class'=>'feature', 'width'=>'240', 'height'=>'127')) }}
         </a>
         <div class="caption">
-          <h3><a href="/store/view/{{ $product->id }}">{{ $product->title }}</a></h3>
-          <p>{{ $product->description }}</p>
+          <h3><a href="/store/view/{{ $product->id }}" title="{{ $product->title }}">{{ str_limit($product->title, 16) }}</a></h3>
+          <p>{{ str_limit($product->description, 100) }}</p>
           <h5>
             Disponibilidad: 
             <span class="{{ Availability::displayClass($product->availability) }}">
