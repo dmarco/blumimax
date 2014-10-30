@@ -59,7 +59,8 @@ class ProductsController extends BaseController {
 			$image 										= Input::file('image');
       $filename 								= time().".".$image->getClientOriginalName();
       $path 										= 'img/products/' . $filename;
-      Image::make($image->getRealPath())->resize(468, 249)->save($path);
+      // Image::make($image->getRealPath())->resize(468, 249)->save($path);
+      Image::make($image->getRealPath())->save($path);
       $product->image = 'img/products/'. $filename;
 
 			if (Input::hasFile('manual'))
