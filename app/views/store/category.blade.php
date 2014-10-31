@@ -3,7 +3,15 @@
 @section('content')
 
   <div class="row row-offcanvas row-offcanvas-right">
-  
+    
+    <br>
+    {{ Breadcrumbs::setDivider(NULL); }}
+    {{ Breadcrumbs::addCssClasses('breadcrumb') }}
+    {{ Breadcrumbs::addCrumb('Home', '/home') }}
+    {{ $breadcrumbs }}
+    {{ Breadcrumbs::render() }}
+    <br>
+    
     <div class="col-xs-6 col-sm-3">
 
       <!-- {{ $categories }} -->

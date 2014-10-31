@@ -6,6 +6,7 @@ class StoreController extends BaseController {
 		parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
 		$this->beforeFilter('auth', array('only'=>array('postAddtocart', 'getCart', 'getRemoveitem')));
+		Breadcrumbs::removeAll();
 	}
 
 	public function getIndex() {
@@ -23,9 +24,22 @@ class StoreController extends BaseController {
 		$category = Category::where('slug', '=', $cat_name)->first();
 		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name', 'slug'));
 		$products = Product::categorized($category)->paginate(6);
+
+		$breadcrumbs = $category->ancestors()->get();
+		
+		// foreach ($breadcrumbs as &$breadcrumb) {
+		// 	$breadcrumbs = Breadcrumbs::addCrumb($breadcrumb->name, $breadcrumb->slug);
+  //     // $aa = Breadcrumbs::addCrumb($breadcrumb->name, $breadcrumb->slug);
+  //   }
+
+		// $breadcrumbs = Breadcrumbs::addCrumb('Home', '/admin');
+		// $breadcrumbs = Breadcrumbs::addCrumb('store', '/store');
+		// $breadcrumbs = Breadcrumbs::addCrumb('store1', '/store1');
+
 		return View::make('store.category')
 			->with('products', $products )
 			->with('categories', $categories )
+			->with('breadcrumbs', $breadcrumbs )
 			->with('category', $category );
 	}
 
