@@ -2,19 +2,18 @@
 
 @section('content')
 
-	<h2>{{ $category->name }}</h2>
-  <hr>
-
   <div class="row row-offcanvas row-offcanvas-right">
   
     <div class="col-xs-6 col-sm-3">
 
       <!-- {{ $categories }} -->
-      
       <div class="list-group">
-      @foreach($categories as $cat)
+        <li class="list-group-item">
+          <h4>{{ $category->name }}</h4>
+        </li>
+        @foreach($categories as $cat)
         <a href="{{ $cat->slug }}" class="list-group-item">{{ $cat->name }} <!-- <span class="badge">14</span> --></a>
-      @endforeach
+        @endforeach
       </div>
 
     </div>

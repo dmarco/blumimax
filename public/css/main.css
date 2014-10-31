@@ -29,52 +29,13 @@ body {
   text-shadow: none;
 }
 
-
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
 
-.navbar-default {
-  background-color: #121212;
-  color: #fff;
-}
-.navbar-default .navbar-nav>li>a {
-  color: #fff;
-}
-.navbar-default .navbar-nav>li>a:hover, 
-.navbar-default .navbar-nav>li>a:focus {
-  color: #ccc;
-}
-.navbar-default .navbar-nav>.open>a, 
-.navbar-default .navbar-nav>.open>a:hover, 
-.navbar-default .navbar-nav>.open>a:focus {
-  color: #fff;
-  background-color: #000;
-}
-
-
-.list-group {
-  margin: 0;
-  padding: 0 0 0 5px;
-}
-.radio, 
-.checkbox {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  min-height: 0px;
-}
-.list-group-item {
-  border: 0px solid #ddd;
-  padding: 2px 0 2px 15px;
-}
-.list-group-item a {
-  margin-right: 10px;
-}
-
-
-
+/* Dropdowns */
 .dropdown-submenu {
     position:relative;
 }
@@ -117,12 +78,78 @@ body {
     border-radius:6px 0 6px 6px;
 }
 
+
+/* Botón Search */
+.input-group-btn:last-child>.btn, 
+.input-group-btn:last-child>.btn-group {
+  background-color: #ff0000;
+  border: solid 1px #ff0000;
+  color: white;
+}
+.input-group-btn:last-child>.btn:hover, 
+.input-group-btn:last-child>.btn:focus, 
+.input-group-btn:last-child>.btn-group:hover,
+.input-group-btn:last-child>.btn-group:focus {
+  background-color: #bf0000;
+  border: solid 1px #bf0000;
+}
+
+
+/* Listas */
+.list-group {
+  margin: 0;
+  padding: 0 0 0 5px;
+}
+.radio, 
+.checkbox {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  min-height: 0px;
+}
+.list-group-item {
+  border: 1px solid #ddd;
+  padding: 6px 0 6px 15px;
+}
+.list-group-item a {
+  margin-right: 10px;
+}
+
+
+/* Navbar */
+.navbar-default {
+  background-color: #121212;
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+  color: #ccc;
+}
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+  color: #fff;
+  background-color: #000;
+}
+
+
+/* Logo */
+.navbar-brand > img {
+  height: auto;
+  width: 150px;
+}
+
+
+/* Thumbnails */
 .thumbnail>img, .thumbnail a>img {
   max-height: 108px;
   width: auto;
 }
 
 
+/* Footer */
 #footer {
   background-color: #333;
   color: #fff;
