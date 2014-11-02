@@ -31,8 +31,32 @@
 
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <br />
-        <a href="/{{ $product->manual }}" class="btn btn-link default" target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i> <h4>Manual</h4></a>
-        <a href="/{{ $product->technical_data }}" class="btn btn-link default" target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i> <h4>Ficha Técnica</h4></a>
+        @if( $product->manual )       
+        <a href="/{{ $product->manual }}" class="btn btn-link default" target="_blank">
+          <i class="fa fa-file-pdf-o fa-2x"></i> 
+          <h4>Manual</h4>
+        </a>
+        @else
+        <a class="btn btn-link default" disabled="disabled">
+          <i class="fa fa-file-pdf-o fa-2x"></i> 
+          <h4>Manual</h4>
+        </a>
+        @endif
+
+        @if( $product->technical_data )       
+        <a href="/{{ $product->technical_data }}" class="btn btn-link default" target="_blank">
+          <i class="fa fa-file-pdf-o fa-2x"></i> 
+          <h4>Ficha Técnica</h4>
+        </a>
+        @else
+        <a class="btn btn-link default" disabled="disabled">
+          <i class="fa fa-file-pdf-o fa-2x"></i> 
+          <h4>Ficha Técnica</h4>
+        </a>
+        @endif
+
+
+        
       </div>
 
     </div>
