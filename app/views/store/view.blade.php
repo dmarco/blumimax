@@ -31,6 +31,7 @@
 
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <br />
+        
         @if( $product->manual )       
         <a href="/{{ $product->manual }}" class="btn btn-link default" target="_blank">
           <i class="fa fa-file-pdf-o fa-2x"></i> 
@@ -55,8 +56,6 @@
         </a>
         @endif
 
-
-        
       </div>
 
     </div>
