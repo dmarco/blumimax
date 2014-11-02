@@ -97,9 +97,11 @@ class ProductsController extends BaseController {
 
 	}
 
-	public function edit($id)
+	public function edit()
 	{
     
+		$id = Input::get('product_id');
+
     // Categoría
 		$cat_id = DB::table('products_categories')->where('product_id', '=', $id)->pluck('category_id');
 		// return $cat_id;
@@ -120,7 +122,6 @@ class ProductsController extends BaseController {
 				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
 			}
 
-
 			if(count($children) > 0) {
         $select .= $this->getChildrenSelect($children, $cat_id);
 	    }
@@ -139,6 +140,59 @@ class ProductsController extends BaseController {
     	->with('test', $cat_id)
     	->with('product', $product)
 			->with('select', $select);
+
+	}
+
+	public function modify()
+	{
+
+		$validator = Validator::make(Input::all(), Product::$rules);
+
+		if ($validator->passes()) {
+			
+			$product 									= Product::find(Input::get('id'));
+			$product->title 					= Input::get('title');
+			$product->description 		= Input::get('description');
+			$product->price 					= Input::get('price');
+			$product->pref_id 				= Input::get('pref_id');
+			$product->availability 		= 1;
+
+			// return $product->description;
+
+			if (Input::hasFile('image'))
+			{
+				$image = Input::file('image');
+	      $filename = time().".".$image->getClientOriginalName();
+	      $path = 'img/products/' . $filename;
+	      Image::make($image->getRealPath())->save($path);
+	      $product->image = 'img/products/'. $filename;
+      }
+			if (Input::hasFile('manual'))
+			{
+				$manual = Input::file('manual');
+				$manual->move('img/manual', time().".".$manual->getClientOriginalName());
+				$product->manual = 'img/manual/'. time().".".$manual->getClientOriginalName();
+			}
+			if (Input::hasFile('technical_data'))
+			{
+				$technical_data = Input::file('technical_data');
+				$technical_data->move('img/technical_data', time().".".$technical_data->getClientOriginalName());
+				$product->technical_data 	= 'img/technical_data/'. time().".".$technical_data->getClientOriginalName();
+			}
+
+      $product->save();
+
+			return Redirect::to('admin/products')
+				->with('message', 'Product Created')
+				->with('alert-type', 'alert-success');
+		}
+
+		// // return View::make('admin.categories.index')
+		return Redirect::to('admin/products')
+			->with('message', 'Hubo un error')
+			->with('alert-type', 'alert-danger')
+			->withErrors($validator)
+			->withInput();
 
 	}
 

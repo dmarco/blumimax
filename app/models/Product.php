@@ -9,13 +9,13 @@ class Product extends Model {
   public static $rules = array(
    'category_id'=>'required',
    'title'=>'required|min:2',
-   'description'=>'required|min:20',
+   'description'=>'required|min:2',
    'price'=>'required|numeric',
    'pref_id'=>'required',
    'availability'=>'integer',
    'manual'=>'mimes:pdf,doc,docx|max:1000',
    'technical_data'=>'mimes:pdf,doc,docx|max:1000',
-   'image'=>'required|image|mimes:jpeg,jpg,bmp,png,gif'
+   'image'=>'mimes:jpeg,jpg,bmp,png,gif'
  );
 
   public function categories() {

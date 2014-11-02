@@ -19,27 +19,66 @@
 
 		<!-- {{ $test }} -->
 		{{ Form::open(array( 'url' => '/admin/products/modify' , 'files'=>true )) }}
-		<p>
+		{{ Form::hidden('id', $product->id) }}
+		<div class="form-group">
 			<label for="nombre">Categoría a la que pertenece el producto</label>
 			{{ $select }}
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label for="title">título</label>
 			{{ Form::text('title', $product->title, array('class'=>'form-control')) }}
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label for="description">Descripción</label>
 			{{ Form::textarea('description', $product->description, array('class'=>'form-control')) }}
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label for="price">Precio</label>
 			{{ Form::text('price', $product->price, array('class'=>'form-control')) }}
-		</p>
-		<p>
-			<label for="image">Seleccionar imagen</label>
+		</div>
+		<div class="form-group">
+			<label for="pref_id">Id MercadoPago</label>
+			{{ Form::text('pref_id', $product->pref_id, array('class'=>'form-control')) }}
+		</div>
+
+
+		<div class="form-group">
+			@if( $product->image )
+			<a href="/{{ $product->image }}" target="_blank">
+				{{ HTML::image($product->image, $product->title, array('width'=>'30')) }} 
+			</a>
+			<label for="image">Modificar Imagen</label>
+			@else
+			<label for="image">Cargar Imagen</label>
+			@endif
 			{{ Form::file('image') }}
-		</p>
-		{{ Form::submit('Crear Producto', array('class'=>'btn btn-success')) }}
+		</div>
+		
+		<div class="form-group">
+			@if( $product->manual )
+			<a href="/{{ $product->manual }}" target="_blank">
+				<i class="fa fa-file-pdf-o"></i>
+			</a>
+			<label for="manual">Modificar Manual</label>
+			@else
+			<label for="manual">Cargar Manual</label>
+			@endif
+			{{ Form::file('manual') }}
+		</div>
+		
+		<div class="form-group">
+			@if( $product->technical_data )
+			<a href="/{{ $product->technical_data }}" target="_blank">
+				<i class="fa fa-file-pdf-o"></i>
+			</a>
+			<label for="technical_data">Modificar Ficha Técnica</label>
+			@else
+			<label for="technical_data">Cargar Ficha Técnica</label>
+			@endif
+			{{ Form::file('technical_data') }}
+		</div>
+		
+		{{ Form::submit('Modificar Producto', array('class'=>'btn btn-success')) }}
 		{{ Form::close() }}
 
 	</div>

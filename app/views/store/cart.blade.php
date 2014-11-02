@@ -2,6 +2,8 @@
 
 @section('content')
 
+  <br>
+
   <div class="panel panel-default">
     
     <div class="panel-heading">
@@ -62,24 +64,32 @@
         <div class="row">
           <div class="col-lg-12">
 
-              <input type="hidden" name="axn" value="ADD">
-              <input type="hidden" name="acc_id" value="4750706">
-              <input type="hidden" name="extraPar" value="">
-              <input type="hidden" name="url_succesfull" value="http://www.blumimax.com/mp/exitoso">
-              <input type="hidden" name="url_cancel" value="http://www.blumimax.com/mp/cancelado">
-              <input type="hidden" name="url_process" value="http://www.blumimax.com/mp/enproceso">
+            <input type="hidden" name="axn" value="ADD">
+            <input type="hidden" name="acc_id" value="4750706">
+            <input type="hidden" name="extraPar" value="">
+            <input type="hidden" name="url_succesfull" value="http://www.blumimax.com/mp/exitoso">
+            <input type="hidden" name="url_cancel" value="http://www.blumimax.com/mp/cancelado">
+            <input type="hidden" name="url_process" value="http://www.blumimax.com/mp/enproceso">
 
-              <input type="hidden" name="item_id" value="1">
-              <input type="hidden" name="name" value="Carrito de Compras de Blumimax">
-              <input type="hidden" name="currency" value="ARG">
-              <input type="hidden" name="price" value="{{ Cart::total() }}">
-              <input type="hidden" name="enc" value="8MwUvwu7%2F12JB1b0MsdKagkM8II%3D">
+            <input type="hidden" name="item_id" value="1">
+            <input type="hidden" name="name" value="Carrito de Compras de Blumimax">
+            <input type="hidden" name="currency" value="ARG">
+            <input type="hidden" name="price" value="{{ Cart::total() }}">
+            <input type="hidden" name="enc" value="8MwUvwu7%2F12JB1b0MsdKagkM8II%3D">
 
-              <input type="hidden" name="ship_cost_mode" value="">
-              <input type="hidden" name="op_retira" value="O">
+            <input type="hidden" name="ship_cost_mode" value="">
+            <input type="hidden" name="op_retira" value="O">
 
-              {{ HTML::link('/', 'Continuar comprando', array('class'=>'btn btn-default')) }}
-              <input type="submit" value="Comprar con MERCADO PAGO" class="btn btn-success pull-right">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                {{ HTML::link('/', 'Continuar comprando', array('class'=>'btn btn-default')) }}
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <input type="submit" value="Comprar con MERCADO PAGO" class="btn btn-success pull-right hidden-xs">
+                <input type="submit" value="Comprar con MERCADO PAGO" class="btn btn-success pull-left visible-xs">
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

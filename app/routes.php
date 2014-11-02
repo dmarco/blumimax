@@ -22,6 +22,7 @@ Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando 
 // Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
+// Route::get('/users/signout', array('uses'=>'UsersController@signout'));
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
 
@@ -38,7 +39,8 @@ Route::get('/admin/categories/delete/{id}', array('uses'=>'CategoriesController@
 
 // Products
 Route::get('/admin/products', array('uses'=>'ProductsController@index'));
-Route::get('/admin/products/edit/{id}','ProductsController@edit');
+Route::post('/admin/products/edit','ProductsController@edit');
+Route::post('/admin/products/modify','ProductsController@modify');
 Route::post('/admin/products/create','ProductsController@create');
 Route::post('/admin/products/destroy','ProductsController@destroy');
 Route::post('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));

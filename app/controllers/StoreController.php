@@ -6,36 +6,28 @@ class StoreController extends BaseController {
 		parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
 		$this->beforeFilter('auth', array('only'=>array('postAddtocart', 'getCart', 'getRemoveitem')));
-		Breadcrumbs::removeAll();
 	}
 
 	public function getIndex() {
 		return View::make('store.index')
-			->with('products', Product::take(4)->orderBy('created_at', 'DESC')->get());
-		// return Product::all();
+			->with('products', Product::orderBy('created_at', 'DESC')->paginate(12));
 	}
 
 	public function getView($id) {
-		return View::make('store.view')->with('product', Product::find($id));
+		$category = ProductsCategories::where('product_id', '=', $id)->pluck('category_id');
+		$category = Category::find($category);
+		$category = Category::where('slug', '=', $category->slug)->first();
+		$breadcrumbs = $category->ancestors()->get();
+		return View::make('store.view')
+			->with('breadcrumbs', $breadcrumbs)
+			->with('product', Product::find($id));
 	}
 
 	public function getCategory($cat_name) {
-		// $category = Category::find($cat_name);
 		$category = Category::where('slug', '=', $cat_name)->first();
 		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name', 'slug'));
-		$products = Product::categorized($category)->paginate(6);
-
+		$products = Product::categorized($category)->paginate(12);
 		$breadcrumbs = $category->ancestors()->get();
-		
-		// foreach ($breadcrumbs as &$breadcrumb) {
-		// 	$breadcrumbs = Breadcrumbs::addCrumb($breadcrumb->name, $breadcrumb->slug);
-  //     // $aa = Breadcrumbs::addCrumb($breadcrumb->name, $breadcrumb->slug);
-  //   }
-
-		// $breadcrumbs = Breadcrumbs::addCrumb('Home', '/admin');
-		// $breadcrumbs = Breadcrumbs::addCrumb('store', '/store');
-		// $breadcrumbs = Breadcrumbs::addCrumb('store1', '/store1');
-
 		return View::make('store.category')
 			->with('products', $products )
 			->with('categories', $categories )
@@ -43,18 +35,22 @@ class StoreController extends BaseController {
 			->with('category', $category );
 	}
 
+	public function getCategoryPriceFilter() {
+		$products = DB::table('products')->whereBetween('price', array(1501, 2000))->paginate(12);
+		return View::make('store.category')
+			->with('products', $products );
+	}
+
 	public function getSearch() {
 		$keyword = Input::get('keyword');
-
 		return View::make('store.search')
-			->with('products', Product::where('title', 'LIKE', '%'.$keyword.'%')->get())
+			->with('products', Product::where('title', 'LIKE', '%'.$keyword.'%')->paginate(12) )
 			->with('keyword', $keyword);
 	}
 
 	public function postAddtocart() {
 		$product = Product::find(Input::get('id'));
 		$quantity = Input::get('quantity');
-
 		Cart::insert(array(
 			'id'=>$product->id,
 			'name'=>$product->title,
@@ -62,7 +58,6 @@ class StoreController extends BaseController {
 			'quantity'=>$quantity,
 			'image'=>$product->image
 		));
-
 		return Redirect::to('store/cart');
 	}
 

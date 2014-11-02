@@ -24,11 +24,11 @@ class UsersController extends BaseController {
 			$user->save();
 
 			return Redirect::to('users/signin')
-				->with('message', 'Thank you for creating a new account. Please sign in.');
+				->with('message', 'Gracias por crear su cuenta.');
 		}
 
 		return Redirect::to('users/newaccount')
-			->with('message', 'Something went wrong')
+			->with('message', 'Ocurrió un error.')
 			->withErrors($validator)
 			->withInput();
 	}
@@ -39,13 +39,13 @@ class UsersController extends BaseController {
 
 	public function postSignin() {
 		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
-			return Redirect::to('/home')->with('message', 'Thanks for signing in');
+			return Redirect::to('/home')->with('message', 'Gracias por loguearse.');
 		}
-		return Redirect::to('users/signin')->with('message', 'Your email/password combo was incorrect');
+		return Redirect::to('users/signin')->with('message', 'Su email/password es incorrecto.');
 	}
 
 	public function getSignout() {
 		Auth::logout();
-		return Redirect::to('users/signin')->with('message', 'You have been signed out');
+		return Redirect::to('users/signin')->with('message', 'Usted se deslogueó.');
 	}
 }

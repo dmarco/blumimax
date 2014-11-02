@@ -19,27 +19,33 @@
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Categoría</th>
-            <th>Eliminar Productos</th>
-            <th>Estado</th>
-            <th>Modificar Estado</th>
+            <th>Modificar Producto</th>
+            <th>Eliminar Producto</th>
+            <th>Modificar Stock</th>
           </tr>
         </thead>
         <tbody>
         	@foreach($products as $product)
           <tr>
 
+            <td>{{ HTML::image($product->image, $product->title, array('width'=>'50')) }} </td>
+            <td>{{ $product->title }}</td>
+            <td>{{ DB::table('categories')->where('id', '=', DB::table('products_categories')->where('product_id', '=', $product->id)->pluck('category_id'))->pluck('name') }}</td>
+						
+						{{ Form::open(array('url'=>'/admin/products/edit', 'class'=>'form-inline')) }}
+	          {{ Form::hidden('product_id', $product->id) }}
+	          <td><button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
+            {{ Form::close() }}
+
           	{{ Form::open(array('url'=>'/admin/products/destroy', 'class'=>'form-inline')) }}
-	          	{{ Form::hidden('product_id', $product->id) }}
-	            <td>{{ HTML::image($product->image, $product->title, array('width'=>'50')) }} </td>
-	            <td>{{ $product->title }}</td>
-	            <td>{{ DB::table('categories')->where('id', '=', DB::table('products_categories')->where('product_id', '=', $product->id)->pluck('category_id'))->pluck('name') }}</td>
-	            <td><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+	          {{ Form::hidden('product_id', $product->id) }}
+	          <td><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
             {{ Form::close() }}
 
             {{ Form::open(array('url'=>'/admin/products/toggle-availability', 'class'=>'form-inline'))}}
-							{{ Form::hidden('id', $product->id) }}
-	            <td>{{ Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability) }}</td>
-	            <td><button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
+						{{ Form::hidden('id', $product->id) }}
+	          <td>{{ Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability) }}
+	          <button type="submit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button></td>
             {{ Form::close() }}
             
           </tr>
