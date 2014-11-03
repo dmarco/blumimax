@@ -72,11 +72,54 @@ a:focus {
 
 
 /* Carousel */
+.carousel-inner {
+}
 .carousel-inner>.item>img, 
 .carousel-inner>.item>a>img {
-  margin: 0 auto;
-  max-height: 360px;
+  margin: 2% 10%;
+  max-height: 280px;
 }
+.carousel-inner .carousel-caption {
+  bottom: 30px;
+  color: #333;
+  left: auto;
+  right: auto;
+  width: 50%;
+}
+.carousel-control {
+  color: #000;
+}
+.carousel-control:hover {
+  color: #333;
+}
+.carousel-control.left {
+  background-image: none; 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: none;
+}
+.carousel-control.right {
+  background-image: none; 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: none;
+}
+.carousel-control .icon-next, 
+.carousel-control .glyphicon-chevron-right {
+  right: 0;
+}
+.carousel-control .icon-next, 
+.carousel-control .glyphicon-chevron-left {
+  left: 0;
+}
+.carousel-indicators {
+  bottom: 0px;
+}
+.carousel-indicators li {
+  border: 1px solid #999;
+}
+.carousel-indicators .active {
+  background-color: #999;
+}
+
 
 
 /* Dropdowns */
@@ -213,6 +256,14 @@ a:focus {
   height: auto;
   width: 150px;
 }
+
+
+/* Page Header */
+.page-header {
+  background-color: #efefef;
+}
+
+
 
 /* Paginador */
 .pagination>li>a, 

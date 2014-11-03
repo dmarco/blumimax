@@ -11,34 +11,34 @@
     </ol>
     <div class="carousel-inner">
       <div class="item">
-        {{ HTML::image('img/promo.png', 'Promotional Ad')}}
-        <!-- <div class="container">
-          <div class="carousel-caption">
-            <h1>Example headline.</h1>
+        {{ HTML::image('img/products/1414878328.EG5000.png', 'Promotional Ad')}}
+        <div class="container">
+          <div class="carousel-caption" style="right: 10%">
+            <h1>EG5000</h1>
             <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <p><a class="btn btn-lg btn-success" href="/store/view/40" role="button">Conocer más <i class="fa fa-angle-double-right"></i></a></p>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="item active">
-        {{ HTML::image('img/promo.png', 'Promotional Ad')}}
-        <!-- <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
+        {{ HTML::image('img/products/1414870551.Foto.png', 'Promotional Ad')}}
+        <div class="container">
+          <div class="carousel-caption" style="right: 10%">
+            <h1>Producto ???</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            <p><a class="btn btn-lg btn-success" href="/store/view/25" role="button">Conocer más <i class="fa fa-angle-double-right"></i></a></p>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="item">
-        {{ HTML::image('img/promo.png', 'Promotional Ad')}}
-        <!-- <div class="container">
-          <div class="carousel-caption">
-            <h1>One more for good measure.</h1>
+        {{ HTML::image('img/products/1414877965.EG1000.png', 'Promotional Ad')}}
+        <div class="container">
+          <div class="carousel-caption" style="right: 10%">
+            <h1>EG1000</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            <p><a class="btn btn-lg btn-success" href="/store/view/39" role="button">Conocer más <i class="fa fa-angle-double-right"></i></a></p>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>

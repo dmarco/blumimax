@@ -119,13 +119,18 @@
           </div>
         </div>
 
-        @yield('promo')
+        <!-- Promo -->
+        <div class="page-header hidden-xs">
+          <div class="container">
 
-        <!-- Begin page content -->
+            @yield('promo')
+
+          </div>
+        </div>
+
+
+        <!-- Content -->
         <div class="container">
-
-          <!-- <h4>:: @{{ searchInput }}</h4> -->
-          <!-- <h4>:: @{{ users }}</h4> -->
 
           @yield('search-keyword')
 
