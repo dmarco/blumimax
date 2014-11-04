@@ -18,6 +18,7 @@ Route::get('/', function()
 });
 //Route::get('/', array('uses'=>'StoreController@getIndex')); // Descomentar cuando esté productivo
 Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando esté productivo
+
 // Route::controller('admin/categories', 'CategoriesController');
 // Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
@@ -25,8 +26,10 @@ Route::controller('users', 'UsersController');
 // Route::get('/users/signout', array('uses'=>'UsersController@signout'));
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
-
+// Store
 Route::get('/{cat_name}', array('uses'=>'StoreController@getCategory'));
+Route::post('/{cat_name}','StoreController@getCategoryPriceFilter');
+
 // Route::get('/{cat_name}/{subcat_name}', array('uses'=>'StoreController@getSubCategory'));
 
 
@@ -45,8 +48,19 @@ Route::post('/admin/products/create','ProductsController@create');
 Route::post('/admin/products/destroy','ProductsController@destroy');
 Route::post('/admin/products/toggle-availability', array('uses'=>'ProductsController@postToggleAvailability'));
 
+// Route::get('/admin/test', array('uses'=>'TestController@index'));
 
-Route::get('/admin/test', array('uses'=>'TestController@index'));
+
+// ANGULARJS ROUTERS ###################################################################
+
+// Price Filter
+// Route::post('/priceFilter', array('uses'=>'StoreController@getCategoryPriceFilter'));
+// Route::post('priceFilter', function()
+// {
+//     return 'pricefilter';
+// });
+
+
 
 
 

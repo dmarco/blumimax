@@ -7,9 +7,8 @@
 		<h1>Crear Nueva Cuenta</h1>
 
 		@if($errors->has())
-		<div id="form-errors">
+		<div class="alert alert-danger" role="alert">
 			<p>Ocurrieron los siguientes errores:</p>
-
 			<ul>
 				@foreach($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -45,14 +44,14 @@
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				{{ Form::text('password', null, array('class'=>'form-control')) }}
+				{{ Form::password('password', array('class'=>'form-control')) }}
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Confirmar Password</label>
 			<div class="col-sm-10">
-				{{ Form::text('password_confirmation', null, array('class'=>'form-control')) }}
+				{{ Form::password('password_confirmation', array('class'=>'form-control')) }}
 			</div>
 		</div>
 

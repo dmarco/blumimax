@@ -17,10 +17,6 @@
         {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') }}
         {{ HTML::style('css/main.css') }}
         {{ HTML::style('css/sticky-footer-navbar.csss') }}
-        {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
-
-        {{ HTML::script('https://code.angularjs.org/1.2.25/angular.min.js') }}
-        {{ HTML::script('js/app.js') }}
 
     </head>
     <body ng-controller="GblCtrl">
@@ -184,13 +180,16 @@
 
 
 
-
+        <!-- Javascripts -->
+        {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <!-- <script>window.jQuery || document.write(" {{ HTML::script('js/vendor/jquery-1.9.1.min.js') }} ")</script> -->
         {{ HTML::script('js/vendor/jquery-1.9.1.min.js') }}
         {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}
-        {{ HTML::script('js/plugins.js') }}
-        {{ HTML::script('js/main.js') }}
+        
+        <!-- Angular -->
+        @yield('angularSection')
+        
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -199,5 +198,6 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+
     </body>
 </html>

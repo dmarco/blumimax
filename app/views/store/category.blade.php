@@ -1,5 +1,10 @@
 @extends('layouts.main')
 
+@section('angularSection')
+{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js') }}
+{{ HTML::script('js/app.js') }}
+@stop
+
 @section('content')
 
   <div class="row row-offcanvas row-offcanvas-right">
@@ -12,60 +17,104 @@
       @endforeach
     </ol>
     
-    @if( ! $category->children()->get()->isEmpty() )
     <div class="col-xs-12 col-sm-3">
       
-      <!-- {{ $categories }} -->
       <div class="list-group">
         <li class="list-group-item">
           <h4>{{ $category->name }}</h4>
         </li>
         @foreach($categories as $cat)
-        <a href="{{ $cat->slug }}" class="list-group-item">{{ $cat->name }} <!-- <span class="badge">14</span> --></a>
+        <a href="{{ $cat->slug }}" class="list-group-item">{{ $cat->name }}</a>
         @endforeach
       </div>
       
       <br>
       
-     
-      <div class="list-group">
-        {{ Form::open(array('url'=>'/store/CategoryPriceFilter')) }}
-          <li class="list-group-item">
-            <h4>Precios</h4>
-          </li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">0 - 500</button></li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">501 - 1000</button></li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">1001 - 1500</button></li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">1501 - 2000</button></li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">2001 - 2500</button></li>
-          <li class="list-group-item"><button type="submit" class="btn btn-link btn-xs">Más de 2500</button></li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <input type="text" class="form-control" placeholder="Min">
-              </div>
-              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <input type="text" class="form-control" placeholder="Max">
-              </div>
-              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <button type="submit" class="btn btn-default"><i class="fa fa-chevron-right"></i></button>
-              </div>
+      <div class="list-group" ng-controller="PriceCtrl">
+        <li class="list-group-item">
+          <h4>Precios</h4>
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="0"   name="min">
+          <input type="hidden" value="1000000000000000000000000000000000" name="max">
+          <button type="submit" class="btn btn-link btn-xs">Todos</button>
+          {{ Form::close() }}  
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="0"   name="min">
+          <input type="hidden" value="500" name="max">
+          <button type="submit" class="btn btn-link btn-xs">0 - 500</button>
+          {{ Form::close() }}  
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="501"  name="min">
+          <input type="hidden" value="1000" name="max">
+          <button type="submit" class="btn btn-link btn-xs">501 - 1000</button>
+          {{ Form::close() }}  
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="1001" name="min">
+          <input type="hidden" value="1500" name="max">
+          <button type="submit" class="btn btn-link btn-xs">1001 - 1500</button>
+          {{ Form::close() }}
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="1501" name="min">
+          <input type="hidden" value="2000" name="max">
+          <button type="submit" class="btn btn-link btn-xs">1501 - 2000</button>
+          {{ Form::close() }}
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="2001" name="min">
+          <input type="hidden" value="2500" name="max">
+          <button type="submit" class="btn btn-link btn-xs">2001 - 2500</button>
+          {{ Form::close() }}
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}          
+          <input type="hidden" value="2500" name="min">
+          <input type="hidden" value=""     name="max">
+          <button type="submit" class="btn btn-link btn-xs">> 2500</button>
+          {{ Form::close() }}
+        </li>
+        <li class="list-group-item">
+          {{ Form::open(array('url'=>'/'.$category->slug, 'method' => 'post')) }}
+          {{ Form::hidden('catslug', $category->slug) }}
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <input type="text" class="form-control" name="min" placeholder="Min">
             </div>
-          </li>
-        {{ Form::close() }}
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <input type="text" class="form-control" name="max" placeholder="Max">
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <button type="submit" class="btn btn-default"><i class="fa fa-chevron-right"></i></button>
+            </div>
+          </div>
+          {{ Form::close() }}
+        </li>
       </div>
       
       <br>
     
     </div>
-    @endif
     
-    @if( ! $category->children()->get()->isEmpty() )
     <div class="col-xs-12 col-sm-9 sidebar-offcanvas">
-    @else
-    <div class="col-xs-12 col-sm-12 sidebar-offcanvas">
-    @endif
       
+      @if( count($products) != 0 )
       <div class="row">
         @foreach($products as $product)
         <div class="col-sm-6 col-md-4">
@@ -103,6 +152,9 @@
         </div>
         @endforeach
       </div>
+      @else
+      <p>No hay resultados</p>
+      @endif
 
     </div>
 

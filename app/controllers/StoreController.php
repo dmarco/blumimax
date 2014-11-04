@@ -36,9 +36,18 @@ class StoreController extends BaseController {
 	}
 
 	public function getCategoryPriceFilter() {
-		$products = DB::table('products')->whereBetween('price', array(1501, 2000))->paginate(12);
+		$cat_slug 	= Input::get('catslug');
+		$min 		= Input::get('min');
+		$max 		= Input::get('max');
+		$category = Category::where('slug', '=', $cat_slug)->first();
+		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name', 'slug'));
+		$breadcrumbs = $category->ancestors()->get();
+		$products = Product::categorized($category)->whereBetween('price', array($min, $max))->paginate(12);
 		return View::make('store.category')
-			->with('products', $products );
+			->with('products', $products )
+			->with('categories', $categories )
+			->with('breadcrumbs', $breadcrumbs )
+			->with('category', $category );
 	}
 
 	public function getSearch() {
