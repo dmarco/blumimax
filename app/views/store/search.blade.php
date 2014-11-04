@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('search-keyword')
-
-  <div class="page-header">
-    <h5>Resultado de búsqueda: <strong><em>{{ $keyword }}</em></strong></h5>
-  </div>
-
+  
+  <br>
+  <h5>Resultado de búsqueda: <strong><em>{{ $keyword }}</em></strong></h5>
+  <hr>
+  
 @stop
 
 @section('content')

@@ -115,14 +115,9 @@
           </div>
         </div>
 
+
         <!-- Promo -->
-        <div class="page-header hidden-xs">
-          <div class="container">
-
-            @yield('promo')
-
-          </div>
-        </div>
+        @yield('promo')
 
 
         <!-- Content -->

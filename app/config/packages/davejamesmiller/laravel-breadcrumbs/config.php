@@ -1,5 +1,5 @@
 <?php
 
-return array(
-    'view' => 'breadcrumbs',
-);
+// return array(
+//     'view' => 'breadcrumbs',
+// );

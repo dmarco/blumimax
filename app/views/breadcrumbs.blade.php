@@ -1,4 +1,4 @@
-@if ($breadcrumbs)
+<!-- @if ($breadcrumbs)
     <ul class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
             @if (!$breadcrumb->last)
@@ -8,4 +8,4 @@
             @endif
         @endforeach
     </ul>
-@endif
+@endif -->
