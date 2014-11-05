@@ -66,6 +66,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
           <h1>{{ $product->title }}</h1>
         </div>
+
         
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
           <p>{{ $product->description }}</p>
@@ -96,7 +97,15 @@
           {{ Form::hidden('id', $product->id) }}
         </div>
 
-        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
+          <hr>    
+          <ul class="list-inline">
+            <li>{{ Shareable::facebook($options = array()) }}</li>
+            <li>{{ Shareable::googlePlus($options = array()) }}</li>
+            <li>{{ Shareable::twitter($options = array()) }}</li>
+          </ul>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
           <hr>
           <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart"></i> AGREGAR</button>

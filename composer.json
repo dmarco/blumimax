@@ -13,7 +13,8 @@
 		"baum/baum": "~1.0",
 		"way/generators": "~2.0",
 		"cviebrock/eloquent-sluggable": "2.*",
-		"creitive/breadcrumbs": "dev-master"
+		"creitive/breadcrumbs": "dev-master",
+		"ryannielson/shareable": "1.0.*"
 	},
 	"autoload": {
 		"classmap": [

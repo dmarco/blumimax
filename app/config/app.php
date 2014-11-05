@@ -127,6 +127,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Creitive\Breadcrumbs\BreadcrumbsServiceProvider',
+		'RyanNielson\Shareable\ShareableServiceProvider',
 
 	),
 
@@ -197,6 +198,7 @@ return array(
 		'Image'           => 'Intervention\Image\Facades\Image',
 		'Cart' 						=> 'Moltin\Cart\Facade',
 		'Breadcrumbs' 		=> 'Creitive\Breadcrumbs\Facades\Breadcrumbs',
+		'Shareable'				=> 'RyanNielson\Shareable\Facades\Shareable',
 		
 	),
 

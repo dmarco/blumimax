@@ -169,22 +169,6 @@ a:focus {
 }
 
 
-
-/* Botón Search */
-.input-group-btn:last-child>.btn, 
-.input-group-btn:last-child>.btn-group {
-  background-color: #ff0000;
-  border: solid 1px #ff0000;
-  color: white;
-}
-.input-group-btn:last-child>.btn:hover, 
-.input-group-btn:last-child>.btn:focus, 
-.input-group-btn:last-child>.btn-group:hover,
-.input-group-btn:last-child>.btn-group:focus {
-  background-color: #bf0000;
-  border: solid 1px #bf0000;
-}
-
 /* Footer */
 .footer {
   background-color: #333;
@@ -201,7 +185,24 @@ a:focus {
 }
 
 
-/* Listas */
+/* Botón Search */
+.input-group-btn:last-child>.btn, 
+.input-group-btn:last-child>.btn-group {
+  background-color: #ff0000;
+  border: solid 1px #ff0000;
+  color: white;
+}
+.input-group-btn:last-child>.btn:hover, 
+.input-group-btn:last-child>.btn:focus, 
+.input-group-btn:last-child>.btn-group:hover,
+.input-group-btn:last-child>.btn-group:focus {
+  background-color: #bf0000;
+  border: solid 1px #bf0000;
+}
+
+
+
+/* Listas Verticales */
 .list-group {
   margin: 0;
   padding: 0 0 0 5px;
@@ -218,6 +219,16 @@ a:focus {
 }
 .list-group-item a {
   margin-right: 10px;
+}
+/* Listas Horizontales */
+.list-inline {
+  display: block;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  float: left;
 }
 
 
