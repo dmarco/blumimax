@@ -55,8 +55,19 @@
 
 @section('content')
 
-	<h2>Productos</h2>
+  <div class="well well-sm">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Compre de la manera más fácil con </h4>
+      </div>
+      <div class="col-md-6">
+        <img class="pull-right" src="https://secure.mlstatic.com/components/resources/mp/desktop/css/assets/desktop-logo-mercadopago.png" alt="">
+      </div>
+    </div>
     
+  </div>
+
+	<h2>Nuevos Productos</h2> 
   <hr>
 
   <div class="row">
