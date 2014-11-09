@@ -44,6 +44,15 @@ a:focus {
 }
 
 
+/* Backgrounds Colors */
+.bg-dark-grey {
+  background-color: #333;
+}
+.bg-Light-grey {
+  background-color: #ccc;
+}
+
+
 /* Botones */
 .btn-link {
   color: #E03434;
@@ -260,12 +269,15 @@ a:focus {
   color: #fff;
   background-color: #222;
 }
+.navbar-form .input-group {
+  width: 100%;
+}
 
 
 /* Logo */
 .navbar-brand > img {
   height: auto;
-  width: 150px;
+  width: 172px;
 }
 
 

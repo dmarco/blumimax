@@ -24,63 +24,9 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Fixed navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="container">
-            
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/home"><img src="/css/img/logo.png" alt=""></a>
-            </div>
-            
-            <div class="collapse navbar-collapse">
-              
-              <!-- Left -->
-              <ul class="nav navbar-nav">
-                
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-
-                    @foreach($catnav as $cat)
-                      @if ( ! $cat->children()->get()->isEmpty() )
-                      <li class="dropdown dropdown-submenu">
-                        {{ HTML::link('/'.$cat->slug, $cat->name) }}
-                        <ul class="dropdown-menu">
-                          @foreach($cat->children()->get() as $subcat)
-                          <li>
-                            {{ HTML::link('/'.$subcat->slug, $subcat->name) }}
-                          </li>
-                          @endforeach
-                        </ul>
-                      </li>
-                      @else
-                      <li>
-                        {{ HTML::link('/'.$cat->slug, $cat->name) }}
-                      </li>
-                      @endif
-                    @endforeach
-
-                  </ul>
-                </li>
-
-                {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form navbar-right')) }}
-                <!-- <form class="navbar-form navbar-right"> -->
-                  <div class="input-group">
-                    {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'searchInput')) }}
-                    <span class="input-group-btn">
-                      {{ Form::submit('Buscar', array('class'=>'btn btn-default', 'ng-click'=>'search()')) }}
-                    </span>
-                  </div>
-                <!-- </form> -->
-                {{ Form::close() }} 
-
-              </ul>
+          <div class="top-header bg-Light-grey">
+            <div class="container">
 
               <!-- Right -->
               <ul class="nav navbar-nav navbar-right">
@@ -109,9 +55,76 @@
                 <li><a href="/store/cart"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
               
               </ul>
-              
-              
-            </div><!--/.nav-collapse -->
+
+            </div>
+          </div>
+          <div class="top-header bg-dark-grey">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5">
+
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home"><img src="/css/img/logo.png" alt=""></a>
+                  </div>
+                  
+                  <div class="collapse navbar-collapse">
+                    
+                    <!-- Left -->
+                    <ul class="nav navbar-nav">
+                      
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+                          @foreach($catnav as $cat)
+                            @if ( ! $cat->children()->get()->isEmpty() )
+                            <li class="dropdown dropdown-submenu">
+                              {{ HTML::link('/'.$cat->slug, $cat->name) }}
+                              <ul class="dropdown-menu">
+                                @foreach($cat->children()->get() as $subcat)
+                                <li>
+                                  {{ HTML::link('/'.$subcat->slug, $subcat->name) }}
+                                </li>
+                                @endforeach
+                              </ul>
+                            </li>
+                            @else
+                            <li>
+                              {{ HTML::link('/'.$cat->slug, $cat->name) }}
+                            </li>
+                            @endif
+                          @endforeach
+
+                        </ul>
+                      </li>
+
+                    </ul>
+                    
+                  </div><!--/.nav-collapse -->
+
+                </div>
+                <div class="col-md-7">
+                  
+                  {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form')) }}
+                  <!-- <form class="navbar-form navbar-right"> -->
+                    <div class="input-group">
+                      {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'searchInput')) }}
+                      <span class="input-group-btn">
+                        {{ Form::submit('Buscar', array('class'=>'btn btn-default', 'ng-click'=>'search()')) }}
+                      </span>
+                    </div>
+                  <!-- </form> -->
+                  {{ Form::close() }} 
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
