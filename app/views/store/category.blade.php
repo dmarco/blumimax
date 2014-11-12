@@ -1,10 +1,5 @@
 @extends('layouts.main')
 
-@section('angularSection')
-{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js') }}
-{{ HTML::script('js/app.js') }}
-@stop
-
 @section('content')
 
   <div class="row row-offcanvas row-offcanvas-right">
@@ -30,7 +25,7 @@
       
       <br>
       
-      <div class="list-group" ng-controller="PriceCtrl">
+      <div class="list-group">
         <li class="list-group-item">
           <h4>Precios</h4>
         </li>

@@ -16,7 +16,7 @@
         {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
         {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') }}
         {{ HTML::style('css/main.css') }}
-        {{ HTML::style('css/sticky-footer-navbar.csss') }}
+        <!-- {{ HTML::style('css/sticky-footer-navbar.css') }} -->
 
     </head>
     <body ng-controller="GblCtrl">
@@ -114,7 +114,7 @@
                   {{ Form::open(array('url'=>'/store/search', 'method'=>'get', 'class'=>'navbar-form')) }}
                   <!-- <form class="navbar-form navbar-right"> -->
                     <div class="input-group">
-                      {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'searchInput')) }}
+                      {{ Form::text('keyword', null, array('placeholder'=>'Buscar producto...', 'class'=>'form-control', 'ng-model'=>'selected', 'typeahead'=>'suggestion for suggestion in autocomplete | filter:$viewValue | limitTo:8' )) }}
                       <span class="input-group-btn">
                         {{ Form::submit('Buscar', array('class'=>'btn btn-default', 'ng-click'=>'search()')) }}
                       </span>
@@ -196,8 +196,9 @@
         {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}
         
         <!-- Angular -->
-        @yield('angularSection')
-        
+        {{ HTML::script('//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js') }}
+        {{ HTML::script('//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js') }}
+        {{ HTML::script('js/app.js') }}
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

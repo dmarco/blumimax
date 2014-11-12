@@ -5,8 +5,21 @@
   <div class="page-header grey hidden-xs">
     <div class="container">
 
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
+      <div ng-controller="CarouselDemoCtrl">
+        <div style="height: 305px">
+          <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+              <img ng-src="@{{slide.image}}" style="margin:auto;">
+              <div class="carousel-caption">
+                <h4>Slide @{{$index}}</h4>
+                <p>@{{slide.text}}</p>
+              </div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+
+      <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class=""></li>
           <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
@@ -46,7 +59,7 @@
         </div>
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-      </div>
+      </div> -->
 
     </div>
   </div>

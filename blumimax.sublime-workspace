@@ -3,6 +3,46 @@
 	{
 		"selected_items":
 		[
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"mar",
+				"margin"
+			]
 		]
 	},
 	"buffers":
@@ -48,28 +88,70 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/push/trabajos/wwwroot/blumimax"
+		"/Users/push/trabajos/wwwroot/blumimax",
+		"/Users/push/trabajos/wwwroot/blumimax/app",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/categories",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/products",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/emails",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/layouts",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/users",
+		"/Users/push/trabajos/wwwroot/blumimax/public",
+		"/Users/push/trabajos/wwwroot/blumimax/public/css",
+		"/Users/push/trabajos/wwwroot/blumimax/public/js",
+		"/Users/push/trabajos/wwwroot/blumimax/public/js/vendor"
 	],
 	"file_history":
 	[
-		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/SearchController.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/products/index.blade.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/models/Product.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/products/edit.blade.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/index.blade.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/ProductsController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/public/js/app.js",
 		"/Users/push/trabajos/wwwroot/blumimax/app/routes.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/StoreController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/SearchController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/public/js/ngAutocomplete.js",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/layouts/main.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/index.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/view.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/search.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/category.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/public/js/vendor/jquery.autocomplete.min.js",
+		"/Users/push/trabajos/wwwroot/blumimax/public/css/main.css",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/layouts/menu-bk",
+		"/Users/push/trabajos/wwwroot/blumimax/app/breadcrumbs.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/breadcrumbs.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/config/packages/davejamesmiller/laravel-breadcrumbs/config.php",
+		"/Users/push/trabajos/wwwroot/blumimax/composer.json",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/hello.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/_CategoriesController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/_ProductsController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/TestController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/models/_Category.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/users/newaccount.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/UsersController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/users/signin.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/models/User.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/config/app.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/lang/es/reminders.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/lang/es/validation.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/lang/es/pagination.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/products/index.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/categories/index.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/pricefilter.blade.php",
 		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/cart.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/libs/Availability.php",
+		"/Users/push/trabajos/wwwroot/blumimax/public/css/sticky-footer-navbar.css",
+		"/Users/push/trabajos/wwwroot/blumimax/app/models/Product.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/ProductsController.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/products/edit.blade.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/views/admin/categorias/index.blade.old.php",
+		"/Users/push/trabajos/wwwroot/blumimax/app/models/ProductsCategories.php",
 		"/Users/push/trabajos/wwwroot/blumimax/app/database/migrations/2014_10_28_220612_add_new_fields_products.php",
 		"/Users/push/trabajos/wwwroot/blumimax/app/database/migrations/2014_10_09_205606_create_products_table.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/view.blade.php",
-		"/Users/push/trabajos/wwwroot/blumimax/public/css/main.css",
-		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/StoreController.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/layouts/main.blade.php",
 		"/Users/push/trabajos/wwwroot/_Blumimax/js/filters.js",
 		"/Users/push/trabajos/wwwroot/blumimax/app/controllers/CategoriesController.php",
 		"/Users/push/Library/Caches/Cleanup At Startup/Transmit/6C41963D-3CE8-467D-89ED-379D050CB8C1/database.php",
-		"/Users/push/trabajos/wwwroot/blumimax/app/views/store/category.blade.php",
 		"/Users/push/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/push/trabajos/wwwroot/blumimax/app/database/migrations/2014_10_28_022805_add_slug_to_categories.php",
 		"/Users/push/trabajos/wwwroot/blumimax/app/config/database.php",
@@ -77,7 +159,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -92,6 +174,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"keyword",
+			"newWidth",
+			"carousel",
+			"PriceCtrl",
+			"angularSection",
+			"search",
+			"page-header",
+			"users",
+			"telephone",
+			"lastname",
+			"firstname",
+			"Se requiere campo",
+			"The password confirmation does not match",
+			"err",
+			"ng-controller",
+			"}}\n",
+			"store.",
+			"category",
+			"=\"#\"",
+			"333",
+			"Thanks for signing in",
+			"for signing",
+			"for singing",
+			"caption",
+			"str_limit",
+			"hidde",
+			"default",
+			"signout",
+			"str_limit",
+			"@if",
+			"pagination",
+			"btn btn-",
+			"where",
+			"store.view",
 			"101",
 			"getChildrenSelect",
 			"technical-data",
@@ -104,6 +220,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"teléfono",
+			"apellido",
+			"nombre",
+			"es requerido"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -121,11 +241,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 22.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -161,7 +281,7 @@
 	"project": "blumimax.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

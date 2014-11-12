@@ -83,4 +83,6 @@ class StoreController extends BaseController {
 	public function getContact() {
 		return View::make('store.contact');
 	}
+
+
 }

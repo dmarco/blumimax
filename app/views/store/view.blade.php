@@ -14,21 +14,15 @@
     
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       
-      <div id="myCarousel" class="carousel slide">
-          <!-- <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-          </ol> -->
+      <!-- <div id="myCarousel" class="carousel slide">
           <div class="carousel-inner">
             <div class="item active">
               {{ HTML::image($product->image, $product->title) }}
             </div>
           </div>
-          <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="icon-prev"></span></a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="icon-next"></span></a> -->
-      </div>
-
+      </div> -->
+      {{ HTML::image($product->image, $product->title) }}
+      
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <br />
         

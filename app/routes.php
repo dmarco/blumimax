@@ -30,6 +30,9 @@ Route::controller('users', 'UsersController');
 Route::get('/{cat_name}', array('uses'=>'StoreController@getCategory'));
 Route::post('/{cat_name}','StoreController@getCategoryPriceFilter');
 
+
+Route::resource('autocomplete', 'StoreController');
+
 // Route::get('/{cat_name}/{subcat_name}', array('uses'=>'StoreController@getSubCategory'));
 
 

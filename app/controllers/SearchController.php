@@ -16,5 +16,7 @@ class SearchController extends BaseController {
 		// return Product::where('title', 'LIKE', '%'.$keyword.'%' );
 	}
 
+
+
 	
 }
