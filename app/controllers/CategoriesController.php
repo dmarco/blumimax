@@ -1,6 +1,5 @@
 <?php
-
-class CategoriesController extends BaseController {
+class CategoriesController extends BaseController{
 
 
 
@@ -17,7 +16,7 @@ class CategoriesController extends BaseController {
 	public function index()
 	{
 
-		$root = DB::table('categories')->where('parent_id', '=', NULL)->get();
+		$root = Category::where('parent_id', '=', NULL)->get();
 		$list = '<ul class="list-group">';
 		$select = '<ul class="list-group">';
     

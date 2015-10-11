@@ -34,7 +34,7 @@ class ProductsController extends BaseController {
     }
     $select .= '</ul>';		
     
-    return View::make('admin.products.index')
+    return View::make('backend.products.index')
     	// ->with('category_id', $category_id)
     	// ->with('category_name', $category_name)
     	->with('products', Product::all())
@@ -136,7 +136,7 @@ class ProductsController extends BaseController {
     $product = Product::find($id);
 
 		// Armo Vista
-		return View::make('admin.products.edit')
+		return View::make('backend.products.edit')
     	->with('test', $cat_id)
     	->with('product', $product)
 			->with('select', $select);

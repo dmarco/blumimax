@@ -1,11 +1,11 @@
 <?php
 
 class BaseController extends Controller {
-
+ 
 	public function __construct() {
-		$this->beforeFilter(function() {
-			View::share('catnav', Category::all()->toHierarchy()); // Comparte catnav entre todas las vistas
-		});
+		
+			View::share('catnav', Category::all()->toHierarchy());
+		
 	}
 
 	/**

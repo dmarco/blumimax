@@ -12,17 +12,19 @@
 */
 
 // Comentar cuando este productivo
-Route::get('/', function()
+/*Route::get('/', function()
 {
     return View::make('layouts.commingsoon');
-});
-//Route::get('/', array('uses'=>'StoreController@getIndex')); // Descomentar cuando esté productivo
+});*/
+Route::get('/', array('uses'=>'StoreController@getIndex')); // Descomentar cuando esté productivo
 Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando esté productivo
 
 // Route::controller('admin/categories', 'CategoriesController');
 // Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
+
+Route::get('fblogin','UsersController@getFacebookLogin');
 // Route::get('/users/signout', array('uses'=>'UsersController@signout'));
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));
 
@@ -39,6 +41,9 @@ Route::resource('autocomplete', 'StoreController');
 // ADMIN ROUTERS ###################################################################
 
 // Categories
+
+
+
 Route::get('/admin/categories', array('uses'=>'CategoriesController@index'));
 Route::get('/admin/categories/create', array('uses'=>'CategoriesController@create'));
 Route::get('/admin/categories/delete/{id}', array('uses'=>'CategoriesController@destroy'));

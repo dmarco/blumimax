@@ -9,12 +9,13 @@
 		"moltin/currency": "dev-master",
 		"moltin/tax": "dev-master",
 		"moltin/cart": "dev-master",
-		"moltin/laravel-cart": "dev-master",
+		"moltin/laravel-cart": "v4.2",
 		"baum/baum": "~1.0",
 		"way/generators": "~2.0",
 		"cviebrock/eloquent-sluggable": "2.*",
 		"creitive/breadcrumbs": "dev-master",
-		"ryannielson/shareable": "1.0.*"
+		"ryannielson/shareable": "1.0.*",
+		"facebook/php-sdk-v4" : "~5.0"
 	},
 	"autoload": {
 		"classmap": [

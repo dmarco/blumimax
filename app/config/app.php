@@ -126,7 +126,6 @@ return array(
 		'Baum\BaumServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		'Creitive\Breadcrumbs\BreadcrumbsServiceProvider',
 		'RyanNielson\Shareable\ShareableServiceProvider',
 
 	),
@@ -197,7 +196,6 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Image'           => 'Intervention\Image\Facades\Image',
 		'Cart' 						=> 'Moltin\Cart\Facade',
-		'Breadcrumbs' 		=> 'Creitive\Breadcrumbs\Facades\Breadcrumbs',
 		'Shareable'				=> 'RyanNielson\Shareable\Facades\Shareable',
 		
 	),

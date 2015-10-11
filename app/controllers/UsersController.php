@@ -8,7 +8,7 @@ class UsersController extends BaseController {
 	}
 
 	public function getNewaccount() {
-		return View::make('users.newaccount');
+		return View::make('frontend.users.newaccount');
 	}
 
 	public function postCreate() {
@@ -36,10 +36,11 @@ class UsersController extends BaseController {
 	}
 
 	public function getSignin() {
-		return View::make('users.signin');
+		return View::make('frontend.users.signin');
 	}
 
 	public function postSignin() {
+
 		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
 			return Redirect::to('/home')->with('message', 'Gracias por loguearse.')->with('alert-type', 'alert-success');;
 		}
@@ -50,4 +51,18 @@ class UsersController extends BaseController {
 		Auth::logout();
 		return Redirect::to('users/signin')->with('message', 'Usted se deslogueó.')->with('alert-type', 'alert-success');;
 	}
+
+	public function getFacebookLogin(){
+			$fb = new Facebook\Facebook([  'app_id' => '',
+  'app_secret' => 'f47b21cb7a6ab51ee485d7e633c32308',
+  'default_graph_version' => 'v2.5',]);
+			$helper = $fb->getRedirectLoginHelper();
+			$permissions = ['email', 'user_likes']; // optional
+			$loginUrl = $helper->getLoginUrl('http://{your-website}/login-callback.php', $permissions);
+			echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+	}
+	public function postFacebookLogin(){
+
+	}
+
 }

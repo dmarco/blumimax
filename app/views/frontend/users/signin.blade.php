@@ -1,9 +1,6 @@
-@extends('layouts.main')
+@extends('frontend.layouts.main')
 
 @section('content')
-
-  <div class="container">
-
     <h1>Tengo una cuenta</h1>
 
     {{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
@@ -21,7 +18,5 @@
     <h3>Usted puede crear su cuenta en un simple paso.</h3>
 
     {{ HTML::link('users/newaccount', 'CREAR NUEVA CUENTA', array('class'=>'default-btn')) }}
-
-  </div>
 
 @stop

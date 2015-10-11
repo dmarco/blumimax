@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'blumimax',
 			'username'  => 'root',
-			'password'  => 'root',
+			'password'  => '123445',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

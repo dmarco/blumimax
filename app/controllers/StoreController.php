@@ -9,8 +9,8 @@ class StoreController extends BaseController {
 	}
 
 	public function getIndex() {
-		return View::make('store.index')
-			->with('products', Product::orderBy('created_at', 'DESC')->paginate(12));
+		$Products = Product::orderBy('created_at', 'DESC')->paginate(12);
+		return View::make('frontend.store.index')->with('products',$Products);
 	}
 
 	public function getView($id) {
@@ -18,7 +18,7 @@ class StoreController extends BaseController {
 		$category = Category::find($category);
 		$category = Category::where('slug', '=', $category->slug)->first();
 		$breadcrumbs = $category->ancestors()->get();
-		return View::make('store.view')
+		return View::make('frontend.store.view')
 			->with('breadcrumbs', $breadcrumbs)
 			->with('product', Product::find($id));
 	}
@@ -28,7 +28,7 @@ class StoreController extends BaseController {
 		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name', 'slug'));
 		$products = Product::categorized($category)->paginate(12);
 		$breadcrumbs = $category->ancestors()->get();
-		return View::make('store.category')
+		return View::make('frontend.store.category')
 			->with('products', $products )
 			->with('categories', $categories )
 			->with('breadcrumbs', $breadcrumbs )
@@ -43,7 +43,7 @@ class StoreController extends BaseController {
 		$categories = $category->getDescendants(1,array('id', 'parent_id', 'name', 'slug'));
 		$breadcrumbs = $category->ancestors()->get();
 		$products = Product::categorized($category)->whereBetween('price', array($min, $max))->paginate(12);
-		return View::make('store.category')
+		return View::make('frontend.store.category')
 			->with('products', $products )
 			->with('categories', $categories )
 			->with('breadcrumbs', $breadcrumbs )
@@ -52,8 +52,8 @@ class StoreController extends BaseController {
 
 	public function getSearch() {
 		$keyword = Input::get('keyword');
-		return View::make('store.search')
-			->with('products', Product::where('title', 'LIKE', '%'.$keyword.'%')->paginate(12) )
+		return View::make('frontend.store.search')
+			->with('products', Product::where('title', 'LIKE', '%'.$keyword.'%')->paginate(12))
 			->with('keyword', $keyword);
 	}
 
@@ -71,7 +71,8 @@ class StoreController extends BaseController {
 	}
 
 	public function getCart() {
-		return View::make('store.cart')->with('products', Cart::contents());
+
+		return View::make('frontend.store.cart')->with('products', Cart::contents());
 	}
 
 	public function getRemoveitem($identifier) {
@@ -81,8 +82,10 @@ class StoreController extends BaseController {
 	}
 
 	public function getContact() {
-		return View::make('store.contact');
+		return View::make('frontend.store.contact');
 	}
-
+	public function getEmpresa(){
+		return View::make('frontend.store.empresa');	
+	}
 
 }
