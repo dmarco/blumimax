@@ -1,49 +1,38 @@
-<?php
-/**
- * Laravel - A PHP Framework For Web Artisans
- *
- * @package  Laravel
- * @author   Taylor Otwell <taylorotwell@gmail.com>
- */
-
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader
-| for our application. We just need to utilize it! We'll require it
-| into the script here so that we do not have to worry about the
-| loading of any our classes "manually". Feels great to relax.
-|
-*/
-
-require __DIR__.'/../bootstrap/autoload.php';
-
-/*
-|--------------------------------------------------------------------------
-| Turn On The Lights
-|--------------------------------------------------------------------------
-|
-| We need to illuminate PHP development, so let's turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight these users.
-|
-*/
-
-$app = require_once __DIR__.'/../bootstrap/start.php';
-
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can simply call the run method,
-| which will execute the request and send the response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have whipped up for them.
-|
-*/
-
-$app->run();
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Blumimax</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<img src="img/logo.png" alt="" class="logo">
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+						<img src="img/productos.png" alt="" class="productos">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+						<img src="img/marcas.png" alt="" class="productos">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+						<a target="_blank" href="http://listado.mercadolibre.com.ar/_CustId_191137419"><img src="img/boton.png" alt="" class="productos"></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center" style="margin-top:25px;">
+						<a target="_blank" href="mailto:comercial@blumimax.com" style="color:brown;font-size:16px;">comercial@blumimax.com</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
