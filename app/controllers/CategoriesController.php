@@ -44,7 +44,7 @@ class CategoriesController extends BaseController{
     $list .= '</ul>';
     $select .= '</ul>';
     
-    return View::make('admin.categories.index')
+    return View::make('backend.categories.index')
 			->with('list', $list)
 			->with('select', $select);
 

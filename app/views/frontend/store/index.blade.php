@@ -65,7 +65,7 @@
                   </div>        
                 </div>
                 <div class="form-group">
-                  <input type="sumbit" class="btn btn-danger col-md-offset-1 col-md-3" value="Enviar">
+                  <input type="sumbit" class="btn btn-danger button-gradinet-red col-md-offset-1 col-md-3" value="Enviar">
                 </div>
             {{Form::close()}}
       </div>
@@ -122,19 +122,13 @@
     @foreach($products as $product)
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <a href="/store/view/{{ $product->id }}">
-          {{ HTML::image("//placehold.it/240x300/#fff", $product->title, array('class'=>'feature', 'width'=>'240', 'height'=>'300')) }}
+        <a href="{{url()}}/store/view/{{ $product->id }}">
+          {{ HTML::image($product->image, $product->title, array('class'=>'feature', 'width'=>'240', 'height'=>'300')) }}
         </a>
         <div class="caption">
           <h4 class="product-name-blue text-center">
               <a href="/store/view/{{ $product->id }}" title="{{ $product->title }}">{{ str_limit($product->title, 22) }}</a>
           </h4>
-          <!-- <h5>
-            Disponibilidad: 
-            <span class="{{ Availability::displayClass($product->availability) }}">
-              {{ Availability::display($product->availability) }}
-            </span>
-          </h5> -->
           <div class="row text-center space">
             <div class="col-xs-6 col-md-6">
                 <h3 class="product-price-old">$ {{ $product->price }}</h3>
@@ -142,25 +136,32 @@
             <div class="col-xs-6 col-md-6">
               <h3 class="product-price-new">$ {{ $product->price }}</h3>
             </div>
+            <hr/>
           </div>
           <div class="row space">
-            <div class="col-md-7 text-center">
-                <p class="product-price-quotas"><strong>$ {{ $product->price }}</strong> <span class="product-quotas">12 cuotas</span></p>
+            <div class="col-md-4 text-center">
+                <p class="product-price-quotas"><strong>$ {{ $product->price }}</strong></p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
+               <span class="product-quotas">12 cuotas</span>
+            </div>
+            <div class="col-md-4">
                 <img src="img/mercadopago-small.png" alt="" width="60">
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 text-center">
-              <a href="https://www.mercadopago.com/mla/checkout/pay?pref_id={{ $product->pref_id }}" class="btn btn-success" target="_blank">Comprar</a>
+            <p class="text-center">ENVIOS A TODO EL PAIS</p>
+          </div>
+          <div class="row">
+            <div class="col-md-offset-2 col-md-4 text-center">
+              <a href="https://www.mercadopago.com/mla/checkout/pay?pref_id={{ $product->pref_id }}" class="btn btn-success button-gradient" target="_blank">Comprar</a>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-3 text-center">
                 {{ Form::open(array('url'=>'/store/addtocart')) }}
                 {{ Form::hidden('quantity', 1) }}
                 {{ Form::hidden('id', $product->id) }}        
             @if( $product->availability == 1 )      
-                <button type="submit" class="btn btn-success"><b>+</b> <i class="fa fa-shopping-cart"></i></button>
+                <button type="submit" class="btn btn-success button-gradient"><b>+</b> <i class="fa fa-shopping-cart"></i></button>
             @endif
             </div>
           </div>

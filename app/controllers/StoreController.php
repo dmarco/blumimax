@@ -17,10 +17,15 @@ class StoreController extends BaseController {
 		$category = ProductsCategories::where('product_id', '=', $id)->pluck('category_id');
 		$category = Category::find($category);
 		$category = Category::where('slug', '=', $category->slug)->first();
+		$product = Product::find($id);
+		$relateds = Product::whereHas('tags',function($q) use($product){
+						$q->whereIn('tag_id',$product->tags->lists('id'));
+		})->whereNotIn('id',array($product->id))->get();
 		$breadcrumbs = $category->ancestors()->get();
 		return View::make('frontend.store.view')
 			->with('breadcrumbs', $breadcrumbs)
-			->with('product', Product::find($id));
+			->with('product', $product)
+			->with('relateds',$relateds);
 	}
 
 	public function getCategory($cat_name) {

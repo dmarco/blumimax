@@ -15,26 +15,31 @@
         <div class="row">
           <div class="col-12 col-lg-12">
               <table class="table table-striped">
-                <tbody>
-                 @foreach($cart as $cart_item)
+                <thead>
                   <tr>
-                    <td width="150">
-                      {{ HTML::image($cart_item->image, $cart_item->name, array('width'=>'150', 'height'=>'160'))}} 
-                    </td>
-                    <td>
-                        <h4 class="cart-name-blue">{{ $cart_item->name }}</h4>
-                              {{ $cart_item->quantity }}
-                    </td>
-                    <td>
-                        ${{ $cart_item->price }}
-                    </td>
-                    <td>
-                      ${{ $cart_item->price * $cart_item->quantity }} 
+                  <th>Item</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                      <a href="/store/removeitem/{{ $cart_item->identifier }}">
+                  @foreach($products as $product)
+                  <tr>
+                    <td>
+                      {{ HTML::image($product->image, $product->name, array('width'=>'65', 'height'=>'37'))}} 
+                      {{ $product->name }}
+                    </td>
+                    <td>
+                      {{ $product->quantity }}
+                    </td>
+                    <td>${{ $product->price }}</td>
+                    <td>
+                      ${{ $product->price * $product->quantity }} 
+                      <a href="/store/removeitem/{{ $product->identifier }}">
                         {{ HTML::image('img/remove.gif', 'Remove product') }}
                       </a>
-                    
                     </td>
                   </tr>
                   @endforeach

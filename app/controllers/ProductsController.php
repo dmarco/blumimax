@@ -34,12 +34,23 @@ class ProductsController extends BaseController {
     }
     $select .= '</ul>';		
     
+    $select2="<select class='form-control' name='category_id'>";
+    	 foreach($root as $cat){	
+    	 				$children2 = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
+    	 				$select2.= '<option class="cat-group" value="'.$cat->id.'">'.$cat->name.'</option>';
+    	 				if(count($children2) > 0) {
+        				$select2 .= $this->getChildrenSelect2($children2, NULL,'-');
+	    				}
+
+    	 }
+    $select2.="</select>";
+    $tags = Tag::lists('name','id');
     return View::make('backend.products.index')
     	// ->with('category_id', $category_id)
     	// ->with('category_name', $category_name)
     	->with('products', Product::all())
-			->with('select', $select);
-
+			->with('select', $select2)
+			->with('tags',$tags);
 	}
 
 	public function create()
@@ -60,8 +71,9 @@ class ProductsController extends BaseController {
       $filename 								= time().".".$image->getClientOriginalName();
       $path 										= 'img/products/' . $filename;
       // Image::make($image->getRealPath())->resize(468, 249)->save($path);
-      Image::make($image->getRealPath())->save($path);
-      $product->image = 'img/products/'. $filename;
+      if($this->process_images($image,$path)){
+      		$product->image = 'img/products/'. $filename;
+			}
 
 			if (Input::hasFile('manual'))
 			{
@@ -96,7 +108,10 @@ class ProductsController extends BaseController {
 			->withInput();
 
 	}
-
+	public function process_images($image,$path)
+	{
+			return Image::make($image->getRealPath())->save($path);
+	}
 	public function edit()
 	{
     
@@ -108,29 +123,17 @@ class ProductsController extends BaseController {
 
 		// Make List Object
 		$root = DB::table('categories')->where('parent_id', '=', NULL)->get();
-		$select = '<ul class="list-group">';
-    
-    foreach($root as $cat){
-    	
-			$children = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
-    	
-			$select .= '<li class="list-group-item">';
+    $select="<select class='form-control' name='category_id'>";
+    	 	foreach($root as $cat){	
+    	 				$children2 = DB::table('categories')->where('parent_id', '=', $cat->id)->get();
+    	 				$selected = ($cat->id == $cat_id) ? 'selected' : '';
+    	 				$select.= '<option class="cat-group" value="'.$cat->id.'" '.$selected.'>'.$cat->name.'</option>';
+    	 				if(count($children2) > 0) {
+        				$select .= $this->getChildrenSelect2($children2, $cat_id,'-');
+	    				}
 
-			if($cat->id == $cat_id){
-				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'" checked>'.$cat->name.'</label></div>';
-			}else{
-				$select .= '<div class="radio"><label><input type="radio" name="category_id" value="'.$cat->id.'">'.$cat->name.'</label></div>';
-			}
-
-			if(count($children) > 0) {
-        $select .= $this->getChildrenSelect($children, $cat_id);
-	    }
-
-	    $select .= '</li>';
-
-    }
-    $select .= '</ul>';
-
+    	 }
+    $select.="</select>";
 
     // Producto
     $product = Product::find($id);
@@ -164,7 +167,7 @@ class ProductsController extends BaseController {
 				$image = Input::file('image');
 	      $filename = time().".".$image->getClientOriginalName();
 	      $path = 'img/products/' . $filename;
-	      Image::make($image->getRealPath())->save($path);
+	      $this->process_images($image,$path);
 	      $product->image = 'img/products/'. $filename;
       }
 			if (Input::hasFile('manual'))
@@ -284,6 +287,22 @@ class ProductsController extends BaseController {
     $select .= '</ul>';
     return $select;
 
+	}
+
+		public function getChildrenSelect2($children, $cat_id, $simbol) 
+  	{
+  	$simbol.='-';
+  	$select="";
+    foreach ($children as $child) {
+    	 					$children3 = DB::table('categories')->where('parent_id', '=', $child->id)->get();
+    $selected = ($child->id == $cat_id) ? 'selected' : '';
+		$select.= '<option class="cat-group" name="category_id" value="'.$child->id.'" '.$selected.'>'.$simbol.$child->name.'</option>';
+    
+	    if(count($children) > 0) {
+	        $select.= $this->getChildrenSelect2($children3, $cat_id,$simbol);
+	    }
+    }
+    return $select;
 	}
 
 

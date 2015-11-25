@@ -32,6 +32,9 @@ class Product extends Model {
       ->whereIn('products_categories.category_id', $categoryIds);
   }
 
+  public function tags() {
+    return $this->belongsToMany('Tag', 'product_tag');
+  }
 
 }
 

@@ -23,7 +23,7 @@ Route::get('/home', array('uses'=>'StoreController@getIndex')); // Sacar cuando 
 // Route::controller('admin/products', 'ProductsController');
 Route::controller('store', 'StoreController');
 Route::controller('users', 'UsersController');
-
+Route::get('empresa','StoreController@getEmpresa');
 Route::get('fblogin','UsersController@getFacebookLogin');
 // Route::get('/users/signout', array('uses'=>'UsersController@signout'));
 // Route::controller('search', array('uses'=>'SearchController@getIndex'));

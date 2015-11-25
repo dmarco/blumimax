@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ingresa a tu cuenta <span class=""> No tengo cuenta, <a href="">Registrarme Ahora</a></span></h4>
+        <h4 class="modal-title" id="myModalLabel">Ingresá a tu cuenta <span class="modal-register"> No tengo cuenta, <a href="">Registrarme Ahora</a></span></h4>
       </div>
       <div class="modal-body">
           <div class="row">
@@ -20,9 +20,6 @@
             </div>
             <div class="form-group">
               <div class="row">
-                <div class="col-md-7">
-                  <a href="" class="login-forget">Olvidé mi contraseña</a>
-                </div>
                 <div class="col-md-5">
                   <div class="checkbox">
                     <label for="" class="login-remainder">
@@ -33,7 +30,15 @@
               </div>
             </div>
             <div class="form-group">
-              {{ Form::button('Ingresar', array('type'=>'submit', 'class'=>'btn btn-success')) }}
+              <div class="row">
+                <div class="col-md-7">
+
+                  <a href="" class="login-forget">Olvidé mi contraseña</a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              {{ Form::button('Ingresar', array('type'=>'submit', 'class'=>'btn btn-success button-gradient')) }}
             </div>
             {{ Form::close() }}  
               
